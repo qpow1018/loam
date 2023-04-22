@@ -2,7 +2,7 @@
   "name": "loam",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "start": "webpack serve --open --mode=development",
     "build": "webpack --mode=production",
