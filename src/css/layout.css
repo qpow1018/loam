@@ -1,0 +1,63 @@
+#includedHeaderWrapper {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-header);
+}
+#header {
+  width: 100%;
+  height: var(--size-header-height);
+  background-color: var(--color-layout-background);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+#header .header-logo {
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 8px;
+  color: var(--color-text-primary);
+}
+#header .navigation-panel {
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+}
+#header .navigation-panel a {
+  transition: var(--default-transition);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: var(--size-header-height);
+  color: var(--color-text-primary);
+}
+#header .navigation-panel a:hover {
+  background-color: var(--color-hover-background);
+}
+#header .navigation-panel a.active {
+  background-color: var(--color-hover-background);
+  color: var(--color-primary);
+}
+#header .navigation-panel a .svg-inline--fa {
+  font-size: 16px;
+}
+#header .navigation-panel a span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+#pageContentWrapper {
+  padding: 16px 16px 40px 16px;
+  min-height: calc(100vh - var(--size-header-height) - var(--size-footer-height));
+}
+
+#footer {
+  width: 100%;
+  height: var(--size-footer-height);
+  background-color: var(--color-layout-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}

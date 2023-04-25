@@ -1,0 +1,12 @@
+.button {
+  border-radius: var(--default-border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 32px;
+  padding: 0 12px;
+  background-color: var(--color-button-default-background);
+  color: var(--color-text-primary);
+}
+.button:hover {
+  background-color: var(--color-button-default-hover-background);
+}

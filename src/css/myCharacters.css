@@ -1,0 +1,73 @@
+#myCharactersPage .card-section {
+  margin-bottom: 16px;
+}
+#myCharactersPage .card-section-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+#myCharactersPage .card-section-title .character-count {
+  color: var(--color-text-secondary);
+  margin-left: 4px;
+}
+
+#myCharactersPage .add-character-form {
+  display: flex;
+  align-items: center;
+}
+#myCharactersPage .add-character-form .input {
+  max-width: 240px;
+  margin-right: 12px;
+}
+#myCharactersPage .add-character-form .button {
+  width: 80px;
+  height: var(--size-input-height);
+}
+
+#myCharactersPage .character-item {
+  cursor: pointer;
+  transition: var(--default-transition);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+#myCharactersPage .character-item:hover {
+  background-color: var(--color-hover-background);
+}
+#myCharactersPage .character-item .character-profile-image-box {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-border);
+  margin-right: 12px;
+}
+#myCharactersPage .character-item .character-profile-image-box img {
+  display: block;
+  object-fit: cover;
+}
+#myCharactersPage .character-item .character-info-panel {
+  flex: 1;
+}
+#myCharactersPage .character-item .character-nickname-panel {
+  display: flex;
+  align-items: center;
+}
+#myCharactersPage .character-item .character-nickname-panel .character-nickname {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+#myCharactersPage .character-item .character-nickname-panel .character-level {
+  margin-left: 6px;
+  font-size: 0.75rem;
+}
+
+#myCharactersPage .character-item .character-class {
+  font-size: 0.813rem;
+  color: var(--color-text-secondary);
+}
+
+#myCharactersPage .character-item .character-action-panel {
+  
+}

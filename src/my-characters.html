@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>LoAM - 내 캐릭터</title>
+
+    <!-- Global Style and Script -->
+    <link rel="stylesheet" href="./assets/fontawesome/all.min.css" />
+    <script src="./assets/fontawesome/all.min.js"></script>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <!-- Page Style and Script -->
+    <link rel="stylesheet" href="./css/myCharacters.css" />
+
+  </head>
+  <body>
+    <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
+
+    <div id="pageContentWrapper">
+      <div id="myCharactersPage">
+        <div class="page-title">
+          내 캐릭터
+        </div>
+
+        <section class="card-section">
+          <div class="card-section-title">
+            내 캐릭터 추가
+          </div>
+          <div class="add-character-form">
+            <input
+              type="text"
+              placeholder="닉네임 입력"
+              class="input"
+              id="characterNicknameInput"
+            />
+            <button
+              type="button"
+              class="button"
+              id="addCharacterButton"
+            >
+              추가
+            </button>
+          </div>
+        </section>
+
+        <section class="card-section">
+          <div class="card-section-title">
+            내 캐릭터 목록 <span class="character-count">0</span>
+          </div>
+          <div class="character-list">
+            <a class="character-item">
+              <div class="character-profile-image-box">
+                
+              </div>
+              <div class="character-info-panel">
+                <div class="character-nickname-panel">
+                  <div class="character-nickname">
+                    닉네임
+                  </div>
+                  <div class="character-level">
+                    템렙
+                  </div>
+                </div>
+                <div class="character-class">
+                  직업
+                </div>
+              </div>
+              <div class="character-action-panel">
+                삭제
+              </div>
+            </a>
+            <a class="character-item">
+              <div class="character-profile-image-box">
+                
+              </div>
+              <div class="character-info-panel">
+                <div class="character-nickname-panel">
+                  <div class="character-nickname">
+                    닉네임
+                  </div>
+                  <div class="character-level">
+                    템렙
+                  </div>
+                </div>
+                <div class="character-class">
+                  직업
+                </div>
+              </div>
+              <div class="character-action-panel">
+                삭제
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="includedFooterWrapper"><!-- include by layout.js --></div>
+
+    <!-- Global Script -->
+    <script type="module" src="./modules/layout.js"></script>
+
+    <!-- Page Script -->
+    <script type="module">
+      import API from './modules/api.js';
+      import * as dotenv from 'dotenv'
+      dotenv.config()
+
+
+      const characterNicknameInput = document.getElementById('characterNicknameInput');
+      const addCharacterButton = document.getElementById('addCharacterButton');
+      characterNicknameInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          submitCharacterNickname();
+        }
+      });
+      addCharacterButton.addEventListener('click', () => {
+        submitCharacterNickname();
+      });
+
+      function submitCharacterNickname() {
+        const nickname = characterNicknameInput.value.trim();
+        if (nickname.length === 0) return;
+
+        API.getInstance().getTest();
+      }
+
+    </script>
+
+  </body>
+</html>

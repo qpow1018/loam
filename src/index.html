@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>LoAM</title>
+
+    <!-- Global Style and Script -->
+    <link rel="stylesheet" href="./assets/fontawesome/all.min.css" />
+    <script src="./assets/fontawesome/all.min.js"></script>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <!-- Page Style and Script -->
+    <link rel="stylesheet" href="./css/loado.css" />
+
+  </head>
+  <body>
+    <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
+
+    <div id="pageContentWrapper">
+      <div id="loadoPage">
+        <div class="loado-page-main-column">
+          <section class="card-section">
+            <div class="card-section-title-panel">
+              <div class="card-section-title">
+                메인 캐릭터
+              </div>
+              <button
+                id="openLoadoMainCharacterModalButton"
+                class="button add-loado-button"
+                type="button"
+              >
+                추가
+              </button>
+            </div>
+
+            <div id="mainCharacterTable">
+              <!-- <div class="table-header">
+                <div class="table-row">
+                  <div class="table-cell">할일</div>
+                  <div class="table-cell">간판스타야무진</div>
+                  <div class="table-cell">반포동슬레이어</div>
+                  <div class="table-cell">32세버서커</div>
+                  <div class="table-cell">인천연합전국도</div>
+                  <div class="table-cell">나충기의오른팔</div>
+                  <div class="table-cell">인천연합현상태</div>
+                  <div class="table-cell">혹시모를키울배럭1</div>
+                </div>
+              </div> -->
+              
+              
+              <!-- <div class="table-body">
+                <div class="table-row">
+                  <div class="table-cell">메모</div>
+                  <div class="table-cell">크리2000개</div>
+                  <div class="table-cell">트포작, 품질작, 전압, 1560</div>
+                  <div class="table-cell">트포작</div>
+                  <div class="table-cell">팔찌</div>
+                  <div class="table-cell">트포작</div>
+                  <div class="table-cell">트포작,볼다이크,품질작</div>
+                  <div class="table-cell"></div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">혈석</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">에포나</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">호감도</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">카던</div>
+                  <div class="table-cell">체크(휴게)</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">가토(휴게)</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">개인추가?</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+              </div>
+              <div class="table-body">
+                <div class="table-row">
+                  <div class="table-cell">주간에포나</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                
+                <div class="table-row">
+                  <div class="table-cell">혈석 교환</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">큐브</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">아르고스</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">발탄</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">비아</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">쿠크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">아브12</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">아브34</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">일리아칸</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">상아탑</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+
+                <div class="table-row">
+                  <div class="table-cell">카양겔</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                  <div class="table-cell">체크</div>
+                </div>
+
+              
+              </div> -->
+            </div>
+          </section>
+
+          <section class="card-section">
+            <div class="card-section-title-panel">
+              <div class="card-section-title">
+                원정대
+              </div>
+              <button
+                id="openLoadoTeamButton"
+                class="button add-loado-button"
+                type="button"
+              >
+                추가
+              </button>
+            </div>
+
+            생기<br/>
+            영지관리<br/>
+            이벤트?<br/>
+            
+            카게<br/>
+            유령선<br/>
+            필보<br/>
+            모험섬<br/>
+            배틀아레나<br/>
+            
+            징표교환<br/>
+            카드팩교환<br/>
+            시련의빛<br/>
+            도비스<br/>
+            도가토<br/>
+            카게지도<br/>
+          </section>
+        </div>
+
+        <div class="loado-page-sub-column">
+          <section class="card-section">
+            <div class="card-section-title-panel">
+              서브 캐릭터 / 추가
+            </div>
+            혈석<br/>
+            에포나<br/>
+            주포나<br/>
+            혈석교환<br/>
+            큐브<br/>
+          </section>
+        </div>
+
+        <div class="loado-page-memo-column">
+          <section class="card-section">
+            <div class="card-section-title-panel">
+              메모 / 추가
+            </div>
+          </section>
+        </div>
+
+        <div
+          id="loadoMainCharacterModal"
+          class="modal"
+        >
+          <div class="modal-title-panel">
+            <div class="modal-title">메인 캐릭터</div>
+            <button class="modal-close-button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="modal-content">
+            addMainCharacterLoadoModal 모달 테스트<br/>
+            addMainCharacterLoadoModal 모달 테스트<br/>
+            addMainCharacterLoadoModal 모달 테스트<br/>
+            addMainCharacterLoadoModal 모달 테스트<br/>
+            addMainCharacterLoadoModal 모달 테스트<br/>
+            addMainCharacterLoadoModal 모달 테스트<br/>
+          </div>
+        </div>
+
+        <div
+          id="loadoTeamModal"
+          class="modal"
+        >
+          <div class="modal-title-panel">
+            <div class="modal-title">원정대 할 일 추가</div>
+            <button class="modal-close-button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        
+          <div class="modal-content">
+            addMainCharacterLoadoModal 모달 테스트<br/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="includedFooterWrapper"><!-- include by layout.js --></div>
+
+    <!-- Global Script -->
+    <script type="module" src="./modules/layout.js"></script>
+
+    <!-- Page Script -->
+    <script type="module">
+      import LoadoTable from './modules/loadoTable.js';
+      import Modal from './modules/Modal.js';
+
+      const loadoTable = new LoadoTable();
+      loadoTable.init();
+
+      const modal = new Modal();
+
+      // 메인 캐릭터 할 일 추가 모달
+      const openLoadoMainCharacterModalButton = document.getElementById('openLoadoMainCharacterModalButton');
+      const closeLoadoMainCharacterModalButton = document.querySelector('#loadoMainCharacterModal .modal-close-button');
+      openLoadoMainCharacterModalButton.addEventListener('click', () => {
+        modal.openWithId('loadoMainCharacterModal');
+      });
+      closeLoadoMainCharacterModalButton.addEventListener('click', () => {
+        modal.closeWithId('loadoMainCharacterModal');
+      });
+
+      // 원정대 할 일 추가 모달
+      const openLoadoTeamButton = document.getElementById('openLoadoTeamButton');
+      const closeLoadoTeamButton = document.querySelector('#loadoTeamModal .modal-close-button');
+      openLoadoTeamButton.addEventListener('click', () => {
+        modal.openWithId('loadoTeamModal');
+      });
+      closeLoadoTeamButton.addEventListener('click', () => {
+        modal.closeWithId('loadoTeamModal');
+      });
+    </script>
+  </body>
+</html>

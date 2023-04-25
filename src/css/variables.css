@@ -1,0 +1,37 @@
+:root {
+  --color-primary: #1cebc7;
+
+  --color-base-background: #212225;
+  --color-layout-background: #0f1113;
+  --color-card-section-background: #2c2f36;
+  --color-modal-background: #353a45;
+  --color-hover-background: #212225;
+
+  --color-button-default-background: #696f7d;
+  --color-button-default-hover-background: #575c68;
+
+  --color-text-primary: #f8f9fa;
+  --color-text-secondary: #989aa0;
+  --color-text-placeholder: #6c757d;
+
+  --color-border: #3c4557;
+  --color-border-light: #4c576f;
+
+  --size-header-height: 52px;
+  --size-footer-height: 52px;
+  --size-modal-default-width: 600px;
+  --size-modal-title-height: 52px;
+  --size-input-height: 40px;
+  --size-loado-cell-width: 140px;
+  --size-loado-cell-height: 48px;
+  --size-loado-cell-width-sm: 120px;
+  --size-loado-cell-height-sm: 40px;
+
+  --default-transition: 0.25s ease-in-out;
+  --default-border-radius: 4px;
+  --default-font-family: 'Noto Sans KR', sans-serif;
+
+  --z-index-header: 10;
+  --z-index-modal-background: 99;
+  --z-index-modal-content: 100;
+}
