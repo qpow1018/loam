@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="./globalStyle.css" />
     <script type="module" src="./globalScript.js"></script>
 
-    
-    
-
     <!-- Page Style and Script -->
     <link rel="stylesheet" href="./css/loado.css" />
 
@@ -27,6 +24,9 @@
               <div class="card-section-title">
                 메인 캐릭터
               </div>
+
+
+              
               <button
                 id="openLoadoMainCharacterModalButton"
                 class="button add-loado-button"
@@ -347,15 +347,15 @@
 
     <div id="includedFooterWrapper"><!-- include by layout.js --></div>
 
-    <!-- Page Script -->
     <script type="module">
+      import { modal } from './lib/stdlib.js';
+
+
       import LoadoTable from './modules/loadoTable.js';
-      import Modal from './modules/Modal.js';
 
       const loadoTable = new LoadoTable();
       loadoTable.init();
 
-      const modal = new Modal();
 
       // 메인 캐릭터 할 일 추가 모달
       const openLoadoMainCharacterModalButton = document.getElementById('openLoadoMainCharacterModalButton');
