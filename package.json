@@ -1,0 +1,29 @@
+{
+  "name": "loam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qpow1018/loam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qpow1018/loam/issues"
+  },
+  "homepage": "https://github.com/qpow1018/loam#readme",
+  "type": "module",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {}
+}

@@ -1,5 +1,3 @@
-// import './assets/fontawesome/all.min.js';
-
 const HTML_HEADER = `
   <header id="header">
     <a href="/" class="header-logo">
