@@ -1,10 +1,6 @@
-makeLayout.js = XMLHttpRequest 더 확실히 알기
-
 웹서버 개념 확실히
 
 script 순서 개념
-
-http://localhost:8000 도메인 처리
 
 node, package, npm start 설정
 
