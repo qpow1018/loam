@@ -99,24 +99,24 @@
 
     <!-- Page Script -->
     <script type="module">
-      import API from './js/api.js';
+      import { api } from './lib/stdlib.js';
 
-      const characterNicknameInput = document.getElementById('characterNicknameInput');
-      const addCharacterButton = document.getElementById('addCharacterButton');
-      characterNicknameInput.addEventListener('keyup', (e) => {
+      const $characterNicknameInput = document.getElementById('characterNicknameInput');
+      const $addCharacterButton = document.getElementById('addCharacterButton');
+      $characterNicknameInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           submitCharacterNickname();
         }
       });
-      addCharacterButton.addEventListener('click', () => {
+      $addCharacterButton.addEventListener('click', () => {
         submitCharacterNickname();
       });
 
       function submitCharacterNickname() {
-        const nickname = characterNicknameInput.value.trim();
+        const nickname = $characterNicknameInput.value.trim();
         if (nickname.length === 0) return;
 
-        API.getInstance().getTest();
+        api.getTest();
       }
 
     </script>
