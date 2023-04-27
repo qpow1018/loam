@@ -1,0 +1,14 @@
+.test-snackbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-index-snackbar);
+  width: 100%;
+  max-width: 420px;
+  height: 44px;
+  
+  background-color: red;
+  
+  
+}

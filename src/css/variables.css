@@ -36,4 +36,5 @@
   --z-index-modal-background: 99;
   --z-index-modal-content: 100;
   --z-index-fixed-loading: 200;
+  --z-index-snackbar: 201;
 }

@@ -94,8 +94,6 @@
           </div>
         </section>
 
-        <div id="testLoading"></div>
-
         <div id="loading"></div>
       </div>
     </div>
@@ -104,13 +102,11 @@
 
     <!-- Page Script -->
     <script type="module">
-      import { api, utils } from './lib/stdlib.js';
+      import { api, snackbar, utils } from './lib/stdlib.js';
 
       // 사용할 로딩 엘리먼트 추가
       const $loading = document.getElementById('loading');
       utils.addLoadingElement($loading, 'fixed');
-      const $testLoading = document.getElementById('testLoading');
-      utils.addLoadingElement($testLoading, 'box');
 
       const $characterNicknameInput = document.getElementById('characterNicknameInput');
       const $addCharacterButton = document.getElementById('addCharacterButton');
@@ -129,16 +125,36 @@
         const nickname = $characterNicknameInput.value.trim();
         if (nickname.length === 0) return;
 
+        // 기존에 있는 캐릭터는 추가하지 않기
+        
+        // 스낵바 테스트
+        snackbar.success('해위');
+        
+        return;
+        
         utils.showElement($loading);
 
         try {
           const chracterInfo = await api.getCharacterInfoByNickname(nickname);
+
+          if (chracterInfo === null) {
+            return;
+          }
+          
+          
+          
+          
           console.log('chracterInfo', chracterInfo);
+          
+          // 필요한 정보만 가져오기
+          
+          
+          // 내부 data storage에 저장
+          
           
         } catch (error) {
           console.error('실패했다', error);
           // 스낵바 만들기
-          
           
         } finally {
           utils.hideElement($loading);
