@@ -36,4 +36,18 @@ const HTML_FOOTER = `
 window.addEventListener('load', () => {
   document.getElementById('includedHeaderWrapper').innerHTML = HTML_HEADER;
   document.getElementById('includedFooterWrapper').innerHTML = HTML_FOOTER;
+  setupNavigationActiveMark();
 });
+
+function setupNavigationActiveMark() {
+  const pathname = window.location.pathname;
+
+  const $navigationLinks = document.querySelectorAll('#header .navigation-panel a');
+  for (const item of $navigationLinks) {
+    const href = item.getAttribute('href');
+    if (pathname === href) {
+      item.classList.add('active');
+      break;
+    }
+  }
+}
