@@ -112,11 +112,22 @@
         submitCharacterNickname();
       });
 
-      function submitCharacterNickname() {
+      async function submitCharacterNickname() {
         const nickname = $characterNicknameInput.value.trim();
         if (nickname.length === 0) return;
 
-        api.getTest();
+        // 띄어쓰기 처리
+
+        // 로딩 처리
+        // 에러 처리
+        try {
+          const chracterInfo = await api.getCharacterInfoByNickname(nickname);
+          console.log('chracterInfo', chracterInfo)
+          
+        } catch (error) {
+          console.error('실패했다', error)
+        }
+        
       }
 
     </script>
