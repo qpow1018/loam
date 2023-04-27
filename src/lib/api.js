@@ -43,14 +43,6 @@ class API {
       `/armories/characters/${nickname}`
     );
   }
-
-  static instance = null;
-  static getInstance() {
-    if (API.instance === null) {
-      API.instance = new API();
-    }
-    return API.instance;
-  }
 }
 
 const _inst = new API();

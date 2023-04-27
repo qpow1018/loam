@@ -1,0 +1,15 @@
+.card-section {
+  background-color: var(--color-card-section-background);
+  border-radius: var(--default-border-radius);
+  padding: 16px;
+}
+
+.page-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* .lvl-chip {
+  
+} */

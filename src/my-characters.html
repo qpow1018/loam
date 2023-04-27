@@ -32,6 +32,7 @@
               placeholder="닉네임 입력"
               class="input"
               id="characterNicknameInput"
+              spellcheck="false"
             />
             <button
               type="button"
@@ -92,6 +93,10 @@
             </a>
           </div>
         </section>
+
+        <div id="testLoading"></div>
+
+        <div id="loading"></div>
       </div>
     </div>
 
@@ -99,15 +104,23 @@
 
     <!-- Page Script -->
     <script type="module">
-      import { api } from './lib/stdlib.js';
+      import { api, utils } from './lib/stdlib.js';
+
+      // 사용할 로딩 엘리먼트 추가
+      const $loading = document.getElementById('loading');
+      utils.addLoadingElement($loading, 'fixed');
+      const $testLoading = document.getElementById('testLoading');
+      utils.addLoadingElement($testLoading, 'box');
 
       const $characterNicknameInput = document.getElementById('characterNicknameInput');
       const $addCharacterButton = document.getElementById('addCharacterButton');
+
       $characterNicknameInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           submitCharacterNickname();
         }
       });
+
       $addCharacterButton.addEventListener('click', () => {
         submitCharacterNickname();
       });
@@ -116,18 +129,20 @@
         const nickname = $characterNicknameInput.value.trim();
         if (nickname.length === 0) return;
 
-        // 띄어쓰기 처리
+        utils.showElement($loading);
 
-        // 로딩 처리
-        // 에러 처리
         try {
           const chracterInfo = await api.getCharacterInfoByNickname(nickname);
-          console.log('chracterInfo', chracterInfo)
+          console.log('chracterInfo', chracterInfo);
           
         } catch (error) {
-          console.error('실패했다', error)
+          console.error('실패했다', error);
+          // 스낵바 만들기
+          
+          
+        } finally {
+          utils.hideElement($loading);
         }
-        
       }
 
     </script>

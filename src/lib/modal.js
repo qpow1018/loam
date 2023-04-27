@@ -49,14 +49,6 @@ class Modal {
     // TODO
     // modal-background 클릭 시 최신 modal 부터 닫기
   }
-
-  static instance = null;
-  static getInstance() {
-    if (Modal.instance === null) {
-      Modal.instance = new Modal();
-    }
-    return Modal.instance;
-  }
 }
 
 const _inst = new Modal();

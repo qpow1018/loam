@@ -6,6 +6,7 @@
   --color-card-section-background: #2c2f36;
   --color-modal-background: #353a45;
   --color-hover-background: #212225;
+  --color-overlay: rgba(0, 0, 0, 0.3);
 
   --color-button-default-background: #696f7d;
   --color-button-default-hover-background: #575c68;
@@ -34,4 +35,5 @@
   --z-index-header: 10;
   --z-index-modal-background: 99;
   --z-index-modal-content: 100;
+  --z-index-fixed-loading: 200;
 }
