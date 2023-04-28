@@ -125,37 +125,34 @@
         const nickname = $characterNicknameInput.value.trim();
         if (nickname.length === 0) return;
 
-        // 기존에 있는 캐릭터는 추가하지 않기
-        
-        // 스낵바 테스트
-        snackbar.success('해위');
-        
-        return;
-        
+        // TODO 기존에 있는 캐릭터는 추가하지 않기
+        const testAlready = false;
+        if (testAlready === true) {
+          snackbar.error('이미 추가된 캐릭터입니다.');
+          return
+        }
+
         utils.showElement($loading);
 
         try {
           const chracterInfo = await api.getCharacterInfoByNickname(nickname);
-
           if (chracterInfo === null) {
+            snackbar.error('캐릭터가 없습니다. 닉네임을 확인해 주세요.');
             return;
           }
-          
-          
-          
-          
-          console.log('chracterInfo', chracterInfo);
-          
+
+          $characterNicknameInput.value = '';
+
           // 필요한 정보만 가져오기
-          
-          
           // 내부 data storage에 저장
-          
-          
+          console.log('chracterInfo', chracterInfo);
+
+
+
         } catch (error) {
-          console.error('실패했다', error);
-          // 스낵바 만들기
-          
+          console.error('submitCharacterNickname', error);
+          snackbar.error('캐릭터 추가에 실패하였습니다.');
+
         } finally {
           utils.hideElement($loading);
         }

@@ -1,14 +1,40 @@
-.test-snackbar {
+.loam-snackbar {
+  visibility: hidden; /* 환면에 보여지기 전 height 계산을 위한 속성 */
   position: fixed;
-  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-index-snackbar);
   width: 100%;
   max-width: 420px;
-  height: 44px;
-  
-  background-color: red;
-  
-  
+  padding-bottom: 12px;
+  opacity: 1;
+  transition: bottom 0.15s ease-in-out;
+}
+.loam-snackbar.loam-snackbar-hide {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.loam-snackbar-container {
+  border-radius: var(--default-border-radius);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+}
+.loam-snackbar-container.loam-snackbar-error {
+  background-color: var(--color-error);
+}
+.loam-snackbar-container.loam-snackbar-success {
+  background-color: var(--color-success);
+}
+
+.loam-snackbar-container .loam-snackbar-icon i {
+  font-size: 18px;
+}
+.loam-snackbar-container .loam-snackbar-message {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 8px;
 }

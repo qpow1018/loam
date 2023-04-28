@@ -1,5 +1,7 @@
 :root {
   --color-primary: #1cebc7;
+  --color-success: #1ca8eb;
+  --color-error: #eb1c40;
 
   --color-base-background: #212225;
   --color-layout-background: #0f1113;
