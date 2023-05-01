@@ -348,13 +348,16 @@
     <div id="includedFooterWrapper"><!-- include by layout.js --></div>
 
     <script type="module">
-      import { modal } from './lib/stdlib.js';
+      import { modal, data } from './lib/stdlib.js';
+      
+      
+      data.testData();
 
 
-      import LoadoTable from './js/loadoTable.js';
+      // import LoadoTable from './js/loadoTable.js';
 
-      const loadoTable = new LoadoTable();
-      loadoTable.init();
+      // const loadoTable = new LoadoTable();
+      // loadoTable.init();
 
 
       // 메인 캐릭터 할 일 추가 모달

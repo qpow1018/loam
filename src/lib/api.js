@@ -43,6 +43,8 @@ class API {
       `/armories/characters/${nickname}`
     );
   }
+  
+  
 }
 
 const _inst = new API();

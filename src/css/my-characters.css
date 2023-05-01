@@ -24,6 +24,13 @@
   height: var(--size-input-height);
 }
 
+
+
+
+
+
+
+
 #myCharactersPage .character-item {
   cursor: pointer;
   transition: var(--default-transition);

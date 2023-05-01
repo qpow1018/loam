@@ -46,7 +46,6 @@ class Snackbar {
     document.body.append($elm);
     this.#displaySnackbars.unshift($elm);
 
-    console.log($elm.offsetHeight);
     $elm.style.bottom = `-${$elm.offsetHeight}px`;
     $elm.style.visibility = 'visible';
 
