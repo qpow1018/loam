@@ -1,14 +1,14 @@
-@import url('./css/reset.css');
-@import url('./css/fonts.css');
+@import url('./assets/css/reset.css');
+@import url('./assets/css/fonts.css');
 
 @import url('./assets/fontawesome/all.min.css');
 
-@import url('./css/variables.css');
-@import url('./css/common.css');
-@import url('./css/layout.css');
-@import url('./css/loading.css');
-@import url('./css/snackbar.css');
-@import url('./css/button.css');
-@import url('./css/modal.css');
-@import url('./css/form.css');
-@import url('./css/element.css');
+@import url('./assets/css/variables.css');
+@import url('./assets/css/common.css');
+@import url('./assets/css/layout.css');
+@import url('./assets/css/loading.css');
+@import url('./assets/css/snackbar.css');
+@import url('./assets/css/button.css');
+@import url('./assets/css/modal.css');
+@import url('./assets/css/form.css');
+@import url('./assets/css/element.css');

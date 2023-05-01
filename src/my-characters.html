@@ -10,7 +10,7 @@
     <script type="module" src="./globalScript.js"></script>
 
     <!-- Page Style and Script -->
-    <link rel="stylesheet" href="./css/myCharacters.css" />
+    <link rel="stylesheet" href="./css/my-characters.css" />
 
   </head>
   <body>
@@ -102,7 +102,7 @@
 
     <!-- Page Script -->
     <script type="module">
-      import { api, snackbar, utils } from './lib/stdlib.js';
+      import { api, snackbar, utils, data } from './lib/stdlib.js';
 
       // 사용할 로딩 엘리먼트 추가
       const $loading = document.getElementById('loading');
@@ -142,6 +142,7 @@
           }
 
           $characterNicknameInput.value = '';
+
 
           // 필요한 정보만 가져오기
           // 내부 data storage에 저장

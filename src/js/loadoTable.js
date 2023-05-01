@@ -1,4 +1,3 @@
-import { LOADO } from './contants.js';
 import Data from './data.js';
 
 class LoadoCell {
