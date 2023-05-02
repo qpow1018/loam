@@ -61,13 +61,25 @@
     <!-- Page Script -->
     <script type="module">
       import { api, snackbar, utils, data } from './lib/stdlib.js';
+      import Drag from './modules/drag.js';
+
+      const $loading = document.getElementById('loading');
+      const $myCharacterList = document.getElementById('myCharacterList');
+      const $characterNicknameInput = document.getElementById('characterNicknameInput');
+      const $addCharacterButton = document.getElementById('addCharacterButton');
 
       // 사용할 로딩 엘리먼트 추가
-      const $loading = document.getElementById('loading');
       utils.addLoadingElement($loading, 'fixed');
 
+      // Draggable 추가
+      const drag = new Drag();
+      drag.setupOptions({
+        containerElm: $myCharacterList,
+        handleElmClassName: 'character-item-drag-handle'
+      });
+      drag.init();
+
       // 리스트 출력
-      const $myCharacterList = document.getElementById('myCharacterList');
       showMyCharacterList();
 
       function showMyCharacterList() {
@@ -100,8 +112,7 @@
         $actionPanelElm.classList.add('character-action-panel');
 
         const $dragHandleBtnElm = document.createElement('button');
-        $dragHandleBtnElm.classList.add('character-action-btn');
-        $dragHandleBtnElm.addEventListener('click', drag);
+        $dragHandleBtnElm.classList.add('character-action-btn', 'character-item-drag-handle');
 
         const $dragHandleIconElm = document.createElement('i');
         $dragHandleIconElm.classList.add('fa-solid', 'fa-arrows-up-down');
@@ -125,24 +136,11 @@
 
 
       // TODO
-      function drag() {
-        console.log('드래그')
-      }
-
-      // TODO
       function deleteRow() {
         console.log('삭제')
       }
 
-
-
-
-
-
-
-      const $characterNicknameInput = document.getElementById('characterNicknameInput');
-      const $addCharacterButton = document.getElementById('addCharacterButton');
-
+      // form 제어
       $characterNicknameInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           submitCharacterNickname();

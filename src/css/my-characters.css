@@ -65,6 +65,7 @@
 }
 #myCharactersPage .character-nickname-panel .character-class {
   font-size: 0.813rem;
+  font-weight: 500;
   color: var(--color-text-secondary);
 }
 
