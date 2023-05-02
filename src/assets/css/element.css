@@ -1,5 +1,10 @@
+.medium-container {
+  max-width: 1080px;
+  /* margin: auto; */
+}
+
 .card-section {
-  background-color: var(--color-card-section-background);
+  background-color: var(--color-dark-2);
   border-radius: var(--default-border-radius);
   padding: 16px;
 }

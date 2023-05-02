@@ -31,10 +31,10 @@
   color: var(--color-text-primary);
 }
 #header .navigation-panel a:hover {
-  background-color: var(--color-hover-background);
+  background-color: var(--color-dark-1);
 }
 #header .navigation-panel a.active {
-  background-color: var(--color-hover-background);
+  background-color: var(--color-dark-1);
   color: var(--color-primary);
 }
 #header .navigation-panel a .svg-inline--fa {

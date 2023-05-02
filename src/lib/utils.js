@@ -45,6 +45,16 @@ class Utils {
   hideElement($elm) {
     $elm.style.display = 'none';
   }
+
+
+  // Game Utils
+  getLevelInteger(levelStr) {
+    const _level = parseFloat(levelStr.replace(/\,/g, ''));
+    return Math.floor(_level);
+  }
+
+
+
 }
 
 const _inst = new Utils()

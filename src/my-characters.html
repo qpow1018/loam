@@ -17,14 +17,14 @@
     <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
 
     <div id="pageContentWrapper">
-      <div id="myCharactersPage">
-        <div class="page-title" onclick="testDelete()">
+      <div id="myCharactersPage" class="medium-container">
+        <div class="page-title">
           내 캐릭터
         </div>
 
         <section class="card-section">
           <div class="card-section-title">
-            내 캐릭터 추가
+            추가하기
           </div>
           <div class="add-character-form">
             <input
@@ -46,7 +46,7 @@
 
         <section class="card-section">
           <div class="card-section-title">
-            내 캐릭터 목록 <span class="character-count">0</span>
+            목록 <span class="character-count">0</span>
           </div>
 
           <div id="myCharacterList"></div>
@@ -86,10 +86,10 @@
           'afterbegin',
           `
             <a class="character-info-panel" href="/character-info.html?nickname=${nickname}">
-              <div class="character-class">${classname}</div>
+              <div class="character-level">${utils.getLevelInteger(level)}</div>
               <div class="character-nickname-panel">
+                <div class="character-class">${classname}</div>
                 <div class="character-nickname">${nickname}</div>
-                <div class="character-level">${level}</div>
               </div>
             </a>
           `

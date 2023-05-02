@@ -24,56 +24,77 @@
   height: var(--size-input-height);
 }
 
-
-
-
-
-
-
-
-#myCharactersPage .character-item {
-  cursor: pointer;
-  transition: var(--default-transition);
+#myCharactersPage #myCharacterList {
   border-top: 1px solid var(--color-border);
+}
+#myCharactersPage .character-item {
+  transition: var(--default-transition);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
-  padding: 12px;
 }
-#myCharactersPage .character-item:hover {
-  background-color: var(--color-hover-background);
-}
-#myCharactersPage .character-item .character-profile-image-box {
-  overflow: hidden;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  background-color: var(--color-border);
-  margin-right: 12px;
-}
-#myCharactersPage .character-item .character-profile-image-box img {
-  display: block;
-  object-fit: cover;
-}
-#myCharactersPage .character-item .character-info-panel {
+
+#myCharactersPage .character-info-panel {
+  transition: var(--default-transition);
   flex: 1;
-}
-#myCharactersPage .character-item .character-nickname-panel {
   display: flex;
   align-items: center;
+  padding: 12px 8px;
+  border-right: 1px solid var(--color-border);
 }
-#myCharactersPage .character-item .character-nickname-panel .character-nickname {
+#myCharactersPage .character-info-panel:hover {
+  background-color: var(--color-dark-1);
+}
+#myCharactersPage .character-level {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--color-dark-3);
+  padding: 6px 10px;
+  min-width: 64px;
+}
+#myCharactersPage .character-nickname-panel {
+  margin-left: 12px;
+}
+#myCharactersPage .character-nickname-panel .character-nickname {
   font-size: 0.875rem;
   font-weight: 700;
 }
-#myCharactersPage .character-item .character-nickname-panel .character-level {
-  margin-left: 6px;
-  font-size: 0.75rem;
-}
-
-#myCharactersPage .character-item .character-class {
+#myCharactersPage .character-nickname-panel .character-class {
   font-size: 0.813rem;
   color: var(--color-text-secondary);
 }
 
-#myCharactersPage .character-item .character-action-panel {
+#myCharactersPage .character-action-panel {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
 }
+#myCharactersPage .character-action-panel .character-action-btn {
+  margin-left: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-dark-3);
+}
+#myCharactersPage .character-action-panel .character-action-btn:first-of-type {
+  margin-left: 0;
+}
+#myCharactersPage .character-action-panel .character-action-btn i {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+
+
+
+
+/* #myCharactersPage .character-item:hover {
+  background-color: var(--color-dark-1);
+}
+*/
+

@@ -5,10 +5,12 @@
 
   --color-base-background: #212225;
   --color-layout-background: #0f1113;
-  --color-card-section-background: #2c2f36;
-  --color-modal-background: #353a45;
-  --color-hover-background: #212225;
   --color-overlay: rgba(0, 0, 0, 0.3);
+
+  --color-dark-1: #212225;
+  --color-dark-2: #2c2f36;
+  --color-dark-3: #3e424c;
+  --color-dark-4: #4f5561;
 
   --color-button-default-background: #696f7d;
   --color-button-default-hover-background: #575c68;
