@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./globalStyle.css" />
     <script type="module" src="./globalScript.js"></script>
 
-    <!-- Page Style and Script -->
+    <!-- Page Style -->
     <link rel="stylesheet" href="./css/my-characters.css" />
 
   </head>
@@ -17,7 +17,7 @@
     <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
 
     <div id="pageContentWrapper">
-      <div id="myCharactersPage" class="medium-container">
+      <div class="medium-container">
         <div class="page-title">
           내 캐릭터
         </div>
@@ -75,9 +75,9 @@
       const drag = new Drag();
       drag.setupOptions({
         containerElm: $myCharacterList,
-        handleElmClassName: 'character-item-drag-handle'
+        handleElmClassName: 'character-item-drag-handle',
+        direction: 'y'
       });
-      drag.init();
 
       // 리스트 출력
       showMyCharacterList();
@@ -87,6 +87,8 @@
         _myCharacters.forEach(item => {
           addMyCharacterRowElement(item.nickname, item.classname, item.level);
         });
+
+        drag.init();
       }
 
       function addMyCharacterRowElement(nickname, classname, level) {

@@ -1,0 +1,18 @@
+.loam-drag-selected {
+  background-color: var(--color-dark-1);
+}
+.loam-drag-selected > * {
+  transition: none !important;
+  opacity: 0;
+}
+
+.loam-drag-target-ghost {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  /* transition: none !important; */
+  position: fixed;
+  z-index: var(--z-index-drag-target-ghost);
+  opacity: 0.75;
+
+  outline: 2px solid red !important;
+}

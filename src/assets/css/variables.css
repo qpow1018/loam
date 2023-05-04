@@ -11,6 +11,7 @@
   --color-dark-2: #2c2f36;
   --color-dark-3: #3e424c;
   --color-dark-4: #4f5561;
+  --color-dark-5: #616777;
 
   --color-button-default-background: #696f7d;
   --color-button-default-hover-background: #575c68;
@@ -37,6 +38,7 @@
   --default-font-family: 'Noto Sans KR', sans-serif;
 
   --z-index-header: 10;
+  --z-index-drag-target-ghost: 15;
   --z-index-modal-background: 99;
   --z-index-modal-content: 100;
   --z-index-fixed-loading: 200;
