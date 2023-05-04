@@ -116,25 +116,16 @@ class Drag {
     // 드래그 이벤트가 끝남
     const onMouseUp = (e) => {
       console.log('$ghostElm', $ghostElm);
-      
-      
+
+
       // 등록된 이벤트 제거
       document.body.removeEventListener('mousemove', onMoveGhoseElement);
       document.body.removeEventListener('mousemove', onMouseUp);
 
       // Ghost Element 위치 맞추기 후 초기화
-      const targetDOMRect = $target.getBoundingClientRect();
-      console.log('targetDOMRect', targetDOMRect);
-      // element.style.width = `${targetDOMRect.width}px`;
-      // element.style.height = `${targetDOMRect.height}px`;
-      // element.style.top = `${targetDOMRect.top}px`;
-      // element.style.left = `${targetDOMRect.left}px`;
-      
       $ghostElm.style.transition = '0.15s ease';
       $ghostElm.style.transform = 'translateX(0)';
-      $ghostElm.style.transform = 'unset';
-
-
+      $ghostElm.style.transform = 'translateY(0)';
 
       setTimeout(() => {
         $target.classList.remove('loam-drag-selected');
@@ -145,6 +136,10 @@ class Drag {
     }
     
     
+    // TODO 추가 작업 필요
+    // onMouseUp 할때 ghostElm이 null 인 현상
+    // onMouseUp 할때 $ghostElm.style.transform 이 초기 위치로 돌아감 - 변경된 위치로 가야하는데
+    // drag.init() 추가 필요 - 리스트 목록이 추가 or 삭제 되었을 때
     
   }
 
