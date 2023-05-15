@@ -115,12 +115,12 @@ class Drag {
 
     // 드래그 이벤트가 끝남
     const onMouseUp = (e) => {
-      console.log('$ghostElm', $ghostElm);
+      console.log('onMouseUp - $ghostElm', $ghostElm);
 
 
       // 등록된 이벤트 제거
       document.body.removeEventListener('mousemove', onMoveGhoseElement);
-      document.body.removeEventListener('mousemove', onMouseUp);
+      document.body.removeEventListener('mouseup', onMouseUp);
 
       // Ghost Element 위치 맞추기 후 초기화
       $ghostElm.style.transition = '0.15s ease';
@@ -137,9 +137,8 @@ class Drag {
     
     
     // TODO 추가 작업 필요
-    // onMouseUp 할때 ghostElm이 null 인 현상
     // onMouseUp 할때 $ghostElm.style.transform 이 초기 위치로 돌아감 - 변경된 위치로 가야하는데
-    // drag.init() 추가 필요 - 리스트 목록이 추가 or 삭제 되었을 때
+    // drag.init() 추가 필요 - 리스트 목록이 추가 or 삭제 되었을 때 - 갯수변경?
     
   }
 
@@ -170,8 +169,6 @@ class Drag {
       centerPoint = targetDOMRect.left + (targetDOMRect.width / 2);
     }
 
-    
-    console.log('element', element)
     return { element, centerPoint };
   }
 
