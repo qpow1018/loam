@@ -26,47 +26,30 @@ const LOCAL_STORAGE_KEY = {
 }
 
 class Data {
-  #myCharacters;
+  getMyCharacters() {
+    return storage.get(LOCAL_STORAGE_KEY.myCharacters, []);
+  }
+
+  setMyCharacters(characters) {
+    storage.set(LOCAL_STORAGE_KEY.myCharacters, characters);
+  }
 
   addMyCharacter(nickname, classname, level) {
-    const _myCharacters = storage.get(LOCAL_STORAGE_KEY.myCharacters, []);
-    storage.set(LOCAL_STORAGE_KEY.myCharacters, [
+    const _myCharacters = this.getMyCharacters();
+    this.setMyCharacters([
       ..._myCharacters,
       { nickname, classname, level }
     ]);
   }
 
-  getMyCharacters() {
-    return storage.get(LOCAL_STORAGE_KEY.myCharacters, []);
+  deleteMyCharacter(nickname) {
+    const _myCharacters = this.getMyCharacters();
+    const _newList = _myCharacters.filter(item => item.nickname !== nickname);
+    this.setMyCharacters(_newList);
   }
 
 
 
-
-
-
-
-  getMainCharacters() {
-    return TEST_DATA1;
-  }
-
-  getMainCharactersDailyTodos() {
-    return {
-      label: '메모',
-      iconInfo: '',
-      column: [
-        {
-          type: 'text',
-          content: '크리2000개',
-          resetType: 'daily',
-        }
-      ]
-    }
-  }
-
-  getMainCharactersWeeklyTodos() {
-    
-  }
 }
 
 const _inst = new Data();

@@ -53,6 +53,37 @@
         </section>
 
         <div id="loading"></div>
+
+        <div
+          id="deleteMyCharacterModal"
+          class="modal"
+        >
+          <div class="modal-title-panel">
+            <div class="modal-title">캐릭터 삭제하기</div>
+            <button class="modal-close-button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-content">
+            <div class="modal-content-text">
+              해당 캐릭터를 삭제하시겠습니까?
+            </div>
+            <div class="modal-content-action-box">
+              <button
+                type="button"
+                class="button modal-action-btn modal-close-button"
+              >
+                취소
+              </button>
+              <button
+                type="button"
+                class="button button-red modal-action-btn delete-character-btn"
+              >
+                삭제하기
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -60,13 +91,16 @@
 
     <!-- Page Script -->
     <script type="module">
-      import { api, snackbar, utils, data } from './lib/stdlib.js';
+      import { api, snackbar, modal, utils, data } from './lib/stdlib.js';
       import Drag from './modules/drag.js';
 
       const $loading = document.getElementById('loading');
       const $myCharacterList = document.getElementById('myCharacterList');
       const $characterNicknameInput = document.getElementById('characterNicknameInput');
       const $addCharacterButton = document.getElementById('addCharacterButton');
+      const $deleteModalCloseButtonInHeader = document.querySelector('#deleteMyCharacterModal .modal-title-panel .modal-close-button');
+      const $deleteModalCloseButtonInContent = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .modal-close-button');
+      const $deleteCharacterButton = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .delete-character-btn');
 
       // 사용할 로딩 엘리먼트 추가
       utils.addLoadingElement($loading, 'fixed');
@@ -76,8 +110,23 @@
       drag.setupOptions({
         containerElm: $myCharacterList,
         handleElmClassName: 'character-item-drag-handle',
-        direction: 'y'
+        direction: 'y',
+        onChange: handleChangeCharacterOrder
       });
+      drag.init();
+
+      function handleChangeCharacterOrder() {
+        const newList = [];
+
+        document.querySelectorAll('.character-item').forEach(item => {
+          const nickname = item.getAttribute('data-nickname');
+          const classname = item.getAttribute('data-classname');
+          const level = item.getAttribute('data-level');
+          newList.push({ nickname, classname, level })
+        });
+
+        data.setMyCharacters(newList);
+      }
 
       // 리스트 출력
       showMyCharacterList();
@@ -87,13 +136,15 @@
         _myCharacters.forEach(item => {
           addMyCharacterRowElement(item.nickname, item.classname, item.level);
         });
-
-        drag.init();
       }
 
       function addMyCharacterRowElement(nickname, classname, level) {
         const $mainElm = document.createElement('div');
         $mainElm.classList.add('character-item');
+
+        $mainElm.setAttribute('data-nickname', nickname);
+        $mainElm.setAttribute('data-classname', classname);
+        $mainElm.setAttribute('data-level', level);
 
         // event가 없는 element라서 insertAdjacentHTML 사용
         $mainElm.insertAdjacentHTML(
@@ -123,7 +174,7 @@
 
         const $deleteBtnElm = document.createElement('button');
         $deleteBtnElm.classList.add('character-action-btn');
-        $deleteBtnElm.addEventListener('click', deleteRow);
+        $deleteBtnElm.addEventListener('click', () => openDeleteMyCharacterModal(nickname));
 
         const $deleteIconElm = document.createElement('i');
         $deleteIconElm.classList.add('fa-solid', 'fa-trash');
@@ -136,13 +187,33 @@
         $myCharacterList.appendChild($mainElm);
       }
 
+      // 삭제 관련
+      let deleteTargetNickname = null;
 
-      // TODO
-      function deleteRow() {
-        console.log('삭제')
+      $deleteModalCloseButtonInHeader.addEventListener('click', closeDeleteMyCharacterModal);
+      $deleteModalCloseButtonInContent.addEventListener('click', closeDeleteMyCharacterModal);
+      $deleteCharacterButton.addEventListener('click', deleteMyCharacter);
+
+      function openDeleteMyCharacterModal(nickname) {
+        deleteTargetNickname = nickname;
+        modal.openWithId('deleteMyCharacterModal');
+      }
+      function closeDeleteMyCharacterModal() {
+        deleteTargetNickname = null;
+        modal.closeWithId('deleteMyCharacterModal');
       }
 
-      // form 제어
+      function deleteMyCharacter(e) {
+        if (deleteTargetNickname === null) return;
+
+        data.deleteMyCharacter(deleteTargetNickname);
+        const $deleteTargetElm = document.querySelector(`.character-item[data-nickname="${deleteTargetNickname}"]`);
+        $deleteTargetElm.remove();
+
+        closeDeleteMyCharacterModal();
+      }
+
+      // form 관련
       $characterNicknameInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           submitCharacterNickname();
