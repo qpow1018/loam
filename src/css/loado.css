@@ -1,36 +1,39 @@
-#loadoPage {
+.loado-page-container {
   display: flex;
   overflow-x: auto;
 }
-#loadoPage .loado-page-sub-column {
+.loado-page-container .loado-page-sub-area {
   margin: 0 16px;
 }
-#loadoPage .loado-page-main-column .card-section {
-  min-width: 360px;
+.loado-page-container .loado-page-main-area .card-section {
+  min-width: 600px;
   margin-bottom: 16px;
 }
-#loadoPage .loado-page-sub-column .card-section {
+.loado-page-container .loado-page-sub-area .card-section {
   min-width: 280px;
 }
-#loadoPage .loado-page-memo-column .card-section {
+.loado-page-container .loado-page-memo-area .card-section {
   min-width: 240px;
 }
-#loadoPage .card-section-title-panel {
+
+.loado-page-container .card-section-title-panel {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
 }
-#loadoPage .card-section-title-panel .card-section-title {
+.loado-page-container .card-section-title-panel .card-section-title {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-#loadoPage .card-section-title-panel .add-loado-button {
+.loado-page-container .card-section-title-panel .add-loado-button {
   height: 28px;
   font-size: 0.813rem;
   margin-left: 8px;
 }
-#loadoPage .empty-content {
+
+/* Loado Table Common */
+.loado-page-container .empty-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,40 +41,20 @@
   color: var(--color-text-secondary);
   height: 120px;
 }
-
 .loado-cell {
   width: var(--size-loado-cell-width);
   height: var(--size-loado-cell-height);
   box-shadow: 0 0 1px #b2b2b2;
 }
 
-#mainCharacterTable .table-header {
+/* Loado Table Specific */
+#mainCharacterTable {
   display: flex;
-  align-items: center;
-  border-bottom: 4px solid var(--color-border);
+  box-shadow: 0 0 1px red;
 }
-#mainCharacterTable .table-header .loado-cell {
-  height: var(--size-loado-cell-height-sm);
+#mainCharacterTable .table-body {
+  display: flex;
 }
-#mainCharacterTable .loado-cell:first-of-type {
-  width: var(--size-loado-cell-width-sm);
-}
-
-
-
-
-#loadoMainCharacterModal {
-  
-  
-}
-
-
-
-
-
-
-
-
 /* #loadoPage .character-table .table-row .table-cell {
   display: flex;
   align-items: center;
@@ -88,3 +71,74 @@
 #loadoPage .character-table .table-row .table-cell:hover {
   background-color: var(--color-dark-1);
 } */
+
+
+/* Loado Table Modal */
+.modal-content {
+  padding: 16px 12px;
+}
+.modal-section {
+  margin-bottom: 16px;
+}
+.modal-section:last-of-type {
+  margin-bottom: 0;
+}
+.modal-section-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+#mainCharacterModal {
+  width: 960px;
+}
+
+.switch-cell-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.switch-cell-container .switch-cell {
+  transition: var(--default-transition);
+  border-radius: var(--default-border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 8px;
+}
+.switch-cell-container .switch-cell:hover {
+  background-color: var(--color-dark-4);
+}
+.switch-cell-container .switch-cell .switch-cell-chip {
+  border-radius: 30px;
+  width: 60px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-right: 8px;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.switch-cell-container .switch-cell .switch-cell-chip .switch-cell-chip-use-text {
+  display: block;
+}
+.switch-cell-container .switch-cell .switch-cell-chip .switch-cell-chip-not-use-text {
+  display: none;
+}
+.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip {
+  border-color: transparent;
+  background-color: var(--color-dark-4);
+  color: var(--color-text-secondary);
+}
+.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip .switch-cell-chip-use-text {
+  display: none;
+}
+.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip .switch-cell-chip-not-use-text {
+  display: block;
+}
+.switch-cell-container .switch-cell .switch-cell-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}

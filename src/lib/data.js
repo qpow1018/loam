@@ -1,3 +1,5 @@
+import config from '/config/index.js';
+
 class LocalStorage {
   get(key, defaultValue) {
     const _value = localStorage.getItem(key);
@@ -18,20 +20,42 @@ class LocalStorage {
     }
   }
 }
-
 const storage = new LocalStorage();
 
-const LOCAL_STORAGE_KEY = {
-  myCharacters: 'LOAM-MY-CHARACTERS',
-}
-
 class Data {
-  getMyCharacters() {
-    return storage.get(LOCAL_STORAGE_KEY.myCharacters, []);
+  // 초기 세팅이 필요한 내용들
+  constructor() {
+    this.#initAllLoadoInMainCharacter();
   }
 
-  setMyCharacters(characters) {
-    storage.set(LOCAL_STORAGE_KEY.myCharacters, characters);
+  #initAllLoadoInMainCharacter() {
+    const _allLoadoInMainCharacter = storage.get(config.storageKey.allLoadoInMainCharacter, null);
+
+    if (_allLoadoInMainCharacter === null) {
+      const _initValue = [
+        { isUse: true, keyName: config.data.memo.keyName },
+        { isUse: true, keyName: config.data.bloodstone.keyName },
+        { isUse: true, keyName: config.data.dailyEpona.keyName },
+        { isUse: true, keyName: config.data.affinity.keyName },
+        { isUse: true, keyName: config.data.chaosDungeon.keyName },
+        { isUse: true, keyName: config.data.guardianRaid.keyName },
+        { isUse: true, keyName: config.data.weeklyEpona.keyName },
+        { isUse: true, keyName: config.data.bloodstoneExchange.keyName },
+        { isUse: true, keyName: config.data.cube.keyName },
+        { isUse: true, keyName: config.data.endContents1.keyName },
+        { isUse: true, keyName: config.data.endContents2.keyName },
+        { isUse: true, keyName: config.data.endContents3.keyName }
+      ];
+      storage.set(config.storageKey.allLoadoInMainCharacter, _initValue);
+    }
+  }
+
+  getMyCharacters() {
+    return storage.get(config.storageKey.myCharacters, []);
+  }
+
+  setMyCharacters(data) {
+    storage.set(config.storageKey.myCharacters, data);
   }
 
   addMyCharacter(nickname, classname, level) {
@@ -48,7 +72,16 @@ class Data {
     this.setMyCharacters(_newList);
   }
 
+  getAllLoadoInMainCharacter() {
+    return storage.get(config.storageKey.allLoadoInMainCharacter, null);
+  }
 
+  setAllLoadoInMainCharacter(data) {
+    storage.set(config.storageKey.allLoadoInMainCharacter, data);
+  }
+  
+  
+  
 
 }
 

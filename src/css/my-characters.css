@@ -6,10 +6,6 @@
   font-weight: 500;
   margin-bottom: 12px;
 }
-.card-section-title .character-count {
-  color: var(--color-text-secondary);
-  margin-left: 4px;
-}
 
 .add-character-form {
   display: flex;
