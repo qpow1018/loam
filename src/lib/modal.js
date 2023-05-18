@@ -2,20 +2,27 @@ class Modal {
   #openedModals = [];
 
   #createModalBackgroud() {
-    if (this.#openedModals.length === 0) {
-      const modalBackgroundElm = document.createElement('div');
-      modalBackgroundElm.classList.add('modal-background');
-      document.body.appendChild(modalBackgroundElm);
-      document.body.classList.add('disabled-scroll');
-    }
+    if (this.#openedModals.length !== 0) return;
+
+    const modalBackgroundElm = document.createElement('div');
+    modalBackgroundElm.classList.add('loam-modal-background');
+    modalBackgroundElm.addEventListener('click', () => {
+      if (this.#openedModals.length === 0) return;
+      const lastModalId = this.#openedModals[this.#openedModals.length - 1];
+      this.closeWithId(lastModalId);
+    });
+
+    document.body.appendChild(modalBackgroundElm);
+    document.body.classList.add('disabled-scroll');
   }
 
   #deleteModalBackground() {
-    if (this.#openedModals.length === 0) {
-      const modalBackgroundElm = document.querySelector('.modal-background');
-      modalBackgroundElm.remove();
-      document.body.classList.remove('disabled-scroll');
-    }
+    if (this.#openedModals.length !== 0) return;
+
+    const modalBackgroundElm = document.querySelector('.loam-modal-background');
+    modalBackgroundElm.remove();
+
+    document.body.classList.remove('disabled-scroll');
   }
 
   openWithId(elmId) {
@@ -43,11 +50,6 @@ class Modal {
     this.#openedModals = this.#openedModals.filter(id => id !== elmId);
 
     this.#deleteModalBackground();
-  }
-
-  close() {
-    // TODO
-    // modal-background 클릭 시 최신 modal 부터 닫기
   }
 }
 
