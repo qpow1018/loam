@@ -15,7 +15,7 @@
   max-width: 240px;
   margin-right: 12px;
 }
-.add-character-form .button {
+.add-character-form .btn {
   width: 80px;
   height: var(--size-input-height);
 }

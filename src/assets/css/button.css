@@ -1,4 +1,4 @@
-.button {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -10,13 +10,20 @@
   background-color: var(--color-button-default-background);
   color: var(--color-text-primary);
 }
-.button:hover {
+.btn:hover {
   background-color: var(--color-button-default-hover-background);
 }
 
-.button.button-red {
+.btn.bg-red {
   background-color: var(--color-red);
 }
-.button.button-red:hover {
+.btn.bg-red:hover {
+  opacity: 0.75;
+}
+
+.btn.bg-blue {
+  background-color: var(--color-blue);
+}
+.btn.bg-blue:hover {
   opacity: 0.75;
 }

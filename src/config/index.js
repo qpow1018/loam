@@ -1,7 +1,7 @@
 const config = {
   storageKey: {
     myCharacters: 'LOAM-MY-CHARACTERS',
-    allLoadoInMainCharacter: 'ALL-LOADO-IN-MAIN-CHARACTERS'
+    mainLoado: 'MAIN-LOADO'
   },
   data: {
     memo: {
@@ -86,6 +86,8 @@ const config = {
       title: '엔드컨텐츠3',
       defaultValueType: 'checkbox'
     },
+
+
   }
 }
 

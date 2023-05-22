@@ -37,15 +37,15 @@
   font-weight: 500;
   color: var(--color-text-primary);
 }
-.loam-modal .modal-title-panel .modal-close-button {
+.loam-modal .modal-title-panel .modal-close-btn {
   border-radius: 50%;
   width: 40px;
   height: 40px;
 }
-.loam-modal .modal-title-panel .modal-close-button:hover {
+.loam-modal .modal-title-panel .modal-close-btn:hover {
   background-color: var(--color-button-default-hover-background);
 }
-.loam-modal .modal-title-panel .modal-close-button .fa-xmark {
+.loam-modal .modal-title-panel .modal-close-btn .fa-xmark {
   display: block;
   margin: auto;
   font-size: 18px;

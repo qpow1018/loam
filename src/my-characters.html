@@ -36,8 +36,8 @@
             />
             <button
               type="button"
-              class="button"
-              id="addCharacterButton"
+              class="btn"
+              id="addCharacterBtn"
             >
               추가
             </button>
@@ -60,7 +60,7 @@
       >
         <div class="modal-title-panel">
           <div class="modal-title">캐릭터 삭제하기</div>
-          <button class="modal-close-button">
+          <button class="modal-close-btn">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -71,13 +71,13 @@
           <div class="modal-content-action-box">
             <button
               type="button"
-              class="button modal-action-btn modal-close-button"
+              class="btn modal-action-btn modal-close-btn"
             >
               취소
             </button>
             <button
               type="button"
-              class="button button-red modal-action-btn delete-character-btn"
+              class="btn bg-red modal-action-btn delete-character-btn"
             >
               삭제하기
             </button>
@@ -96,10 +96,10 @@
       const $loading = document.querySelector('#loading');
       const $myCharacterList = document.querySelector('#myCharacterList');
       const $characterNicknameInput = document.querySelector('#characterNicknameInput');
-      const $addCharacterButton = document.querySelector('#addCharacterButton');
-      const $deleteModalCloseButtonInHeader = document.querySelector('#deleteMyCharacterModal .modal-title-panel .modal-close-button');
-      const $deleteModalCloseButtonInContent = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .modal-close-button');
-      const $deleteCharacterButton = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .delete-character-btn');
+      const $addCharacterBtn = document.querySelector('#addCharacterBtn');
+      const $deleteModalCloseBtnInHeader = document.querySelector('#deleteMyCharacterModal .modal-title-panel .modal-close-btn');
+      const $deleteModalCloseBtnInContent = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .modal-close-btn');
+      const $deleteCharacterBtn = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .delete-character-btn');
 
       // 사용할 로딩 엘리먼트 추가
       utils.addLoadingElement($loading, 'fixed');
@@ -115,13 +115,16 @@
       drag.init();
 
       function handleChangeCharacterOrder() {
+        const myCharacters = data.getMyCharacters();
         const newList = [];
 
         document.querySelectorAll('.character-item').forEach(item => {
           const nickname = item.getAttribute('data-nickname');
-          const classname = item.getAttribute('data-classname');
-          const level = item.getAttribute('data-level');
-          newList.push({ nickname, classname, level })
+          const data = myCharacters.find(item => item.nickname === nickname);
+          if (data === undefined) {
+            throw new Error('myCharacters data is undefined');
+          }
+          newList.push(data);
         });
 
         data.setMyCharacters(newList);
@@ -142,8 +145,6 @@
         $mainElm.classList.add('character-item');
 
         $mainElm.setAttribute('data-nickname', nickname);
-        $mainElm.setAttribute('data-classname', classname);
-        $mainElm.setAttribute('data-level', level);
 
         // event가 없는 element라서 insertAdjacentHTML 사용
         $mainElm.insertAdjacentHTML(
@@ -189,9 +190,9 @@
       // 삭제 관련
       let deleteTargetNickname = null;
 
-      $deleteModalCloseButtonInHeader.addEventListener('click', closeDeleteMyCharacterModal);
-      $deleteModalCloseButtonInContent.addEventListener('click', closeDeleteMyCharacterModal);
-      $deleteCharacterButton.addEventListener('click', deleteMyCharacter);
+      $deleteModalCloseBtnInHeader.addEventListener('click', closeDeleteMyCharacterModal);
+      $deleteModalCloseBtnInContent.addEventListener('click', closeDeleteMyCharacterModal);
+      $deleteCharacterBtn.addEventListener('click', deleteMyCharacter);
 
       function openDeleteMyCharacterModal(nickname) {
         deleteTargetNickname = nickname;
@@ -219,7 +220,7 @@
         }
       });
 
-      $addCharacterButton.addEventListener('click', () => {
+      $addCharacterBtn.addEventListener('click', () => {
         submitCharacterNickname();
       });
 

@@ -19,20 +19,24 @@ class LocalStorage {
       console.error('set storage error', error);
     }
   }
+
+  remove(key) {
+    localStorage.removeItem(key);
+  }
 }
 const storage = new LocalStorage();
 
 class Data {
   // 초기 세팅이 필요한 내용들
   constructor() {
-    this.#initAllLoadoInMainCharacter();
+    this.#initMainLoado();
   }
 
-  #initAllLoadoInMainCharacter() {
-    const _allLoadoInMainCharacter = storage.get(config.storageKey.allLoadoInMainCharacter, null);
+  #initMainLoado() {
+    const mainLoado = storage.get(config.storageKey.mainLoado, null);
 
-    if (_allLoadoInMainCharacter === null) {
-      const _initValue = [
+    if (mainLoado === null) {
+      const initValue = [
         { isUse: true, keyName: config.data.memo.keyName },
         { isUse: true, keyName: config.data.bloodstone.keyName },
         { isUse: true, keyName: config.data.dailyEpona.keyName },
@@ -46,7 +50,7 @@ class Data {
         { isUse: true, keyName: config.data.endContents2.keyName },
         { isUse: true, keyName: config.data.endContents3.keyName }
       ];
-      storage.set(config.storageKey.allLoadoInMainCharacter, _initValue);
+      storage.set(config.storageKey.mainLoado, initValue);
     }
   }
 
@@ -62,7 +66,13 @@ class Data {
     const _myCharacters = this.getMyCharacters();
     this.setMyCharacters([
       ..._myCharacters,
-      { nickname, classname, level }
+      {
+        nickname,
+        classname,
+        level,
+        isMainCharacter: false,
+        isSubCharacter: false
+      }
     ]);
   }
 
@@ -72,17 +82,13 @@ class Data {
     this.setMyCharacters(_newList);
   }
 
-  getAllLoadoInMainCharacter() {
-    return storage.get(config.storageKey.allLoadoInMainCharacter, null);
+  getMainLoado() {
+    return storage.get(config.storageKey.mainLoado, null);
   }
 
-  setAllLoadoInMainCharacter(data) {
-    storage.set(config.storageKey.allLoadoInMainCharacter, data);
+  setMainLoado(data) {
+    storage.set(config.storageKey.mainLoado, data);
   }
-  
-  
-  
-
 }
 
 const _inst = new Data();

@@ -26,35 +26,57 @@
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-.loado-page-container .card-section-title-panel .add-loado-button {
+.loado-page-container .card-section-title-panel .add-loado-btn {
   height: 28px;
   font-size: 0.813rem;
   margin-left: 8px;
 }
 
 /* Loado Table Common */
-.loado-page-container .empty-content {
+/* .loado-page-container .empty-content {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
   color: var(--color-text-secondary);
   height: 120px;
-}
+} */
+
 .loado-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--size-loado-cell-width);
   height: var(--size-loado-cell-height);
   box-shadow: 0 0 1px #b2b2b2;
 }
+.loado-cell.loado-cell-hide {
+  display: none;
+}
+
 
 /* Loado Table Specific */
-#mainCharacterTable {
+#mainTable {
   display: flex;
   box-shadow: 0 0 1px red;
 }
-#mainCharacterTable .table-body {
+#mainTable .table-body {
   display: flex;
 }
+#mainTable .loado-cell.main-table-subject-cell {
+  width: var(--size-loado-cell-width-sm);
+  background-color: red;
+}
+
+
+
+/* #mainTable .main-table-subject-cell .main-table-subject-cell-inner {
+  display: ;
+  background-color: blue;
+} */
+
+
+
 /* #loadoPage .character-table .table-row .table-cell {
   display: flex;
   align-items: center;
@@ -73,72 +95,74 @@
 } */
 
 
-/* Loado Table Modal */
-.modal-content {
+/* Loado Modal */
+.loado-modal {
+  width: 800px;
+}
+.loado-modal .modal-content {
   padding: 16px 12px;
 }
-.modal-section {
+.loado-modal .modal-section {
   margin-bottom: 16px;
 }
-.modal-section:last-of-type {
-  margin-bottom: 0;
-}
-.modal-section-title {
+.loado-modal .modal-section-title {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-secondary);
   margin-bottom: 4px;
 }
-
-#mainCharacterModal {
-  width: 960px;
-}
-
-.switch-cell-container {
+.loado-modal .check-cell-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
-.switch-cell-container .switch-cell {
-  transition: var(--default-transition);
+.loado-modal .check-cell {
+  user-select: none;
+  transition: background-color var(--default-transition);
   border-radius: var(--default-border-radius);
   cursor: pointer;
   display: flex;
   align-items: center;
   height: 44px;
-  padding: 0 8px;
+  padding: 0 12px;
 }
-.switch-cell-container .switch-cell:hover {
+.loado-modal .check-cell:hover {
   background-color: var(--color-dark-4);
 }
-.switch-cell-container .switch-cell .switch-cell-chip {
-  border-radius: 30px;
-  width: 60px;
-  padding: 4px 0;
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 500;
+.loado-modal .check-cell .check-cell-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
   margin-right: 8px;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1.5px solid #fff;
 }
-.switch-cell-container .switch-cell .switch-cell-chip .switch-cell-chip-use-text {
-  display: block;
-}
-.switch-cell-container .switch-cell .switch-cell-chip .switch-cell-chip-not-use-text {
+.loado-modal .check-cell .check-cell-icon i {
+  font-size: 8px;
   display: none;
 }
-.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip {
-  border-color: transparent;
-  background-color: var(--color-dark-4);
-  color: var(--color-text-secondary);
-}
-.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip .switch-cell-chip-use-text {
-  display: none;
-}
-.switch-cell-container .switch-cell.switch-cell-not-use .switch-cell-chip .switch-cell-chip-not-use-text {
-  display: block;
-}
-.switch-cell-container .switch-cell .switch-cell-label {
+.loado-modal .check-cell .check-cell-label {
   font-size: 0.875rem;
   font-weight: 500;
+  padding-bottom: 2px;
+}
+.loado-modal .check-cell.check-cell-active .check-cell-icon {
+  border-color: var(--color-primary);
+}
+.loado-modal .check-cell.check-cell-active .check-cell-icon i {
+  color: var(--color-primary);
+  display: block;
+}
+.loado-modal .check-cell.check-cell-active .check-cell-label {
+  color: var(--color-primary);
+}
+.loado-modal .modal-action-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loado-modal .modal-action-btn {
+  min-width: 180px;
+  height: 40px;
 }
