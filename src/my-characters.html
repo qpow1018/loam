@@ -14,9 +14,9 @@
 
   </head>
   <body>
-    <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
+    <div id="header-wrapper"><!-- include by layout.js --></div>
 
-    <main id="pageContentWrapper">
+    <main id="main-wrapper">
       <div class="medium-container">
         <h2 class="page-title">
           내 캐릭터
@@ -31,13 +31,13 @@
               type="text"
               placeholder="닉네임 입력"
               class="input"
-              id="characterNicknameInput"
+              id="character-nickname-input"
               spellcheck="false"
             />
             <button
               type="button"
               class="btn"
-              id="addCharacterBtn"
+              id="add-character-btn"
             >
               추가
             </button>
@@ -48,14 +48,14 @@
           <div class="card-section-title">
             목록
           </div>
-          <div id="myCharacterList"></div>
+          <div id="my-character-list"></div>
         </section>
       </div>
 
       <div id="loading"></div>
 
       <section
-        id="deleteMyCharacterModal"
+        id="delete-my-character-modal"
         class="loam-modal"
       >
         <div class="modal-title-panel">
@@ -86,7 +86,7 @@
       </section>
     </main>
 
-    <div id="includedFooterWrapper"><!-- include by layout.js --></div>
+    <div id="footer-wrapper"><!-- include by layout.js --></div>
 
     <!-- Page Script -->
     <script type="module" src="./js/my-chracters.js"></script>

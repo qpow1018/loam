@@ -28,14 +28,14 @@ const HTML_HEADER = `
 `;
 
 const HTML_FOOTER = `
-    <footer id="footer">
+  <footer id="footer">
     Footer / Made by Jin
-    </footer>
+  </footer>
 `;
 
 window.addEventListener('load', () => {
-  document.getElementById('includedHeaderWrapper').innerHTML = HTML_HEADER;
-  document.getElementById('includedFooterWrapper').innerHTML = HTML_FOOTER;
+  document.getElementById('header-wrapper').innerHTML = HTML_HEADER;
+  document.getElementById('footer-wrapper').innerHTML = HTML_FOOTER;
   setupNavigationActiveMark();
 });
 

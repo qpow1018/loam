@@ -1,4 +1,4 @@
-#includedHeaderWrapper {
+#header-wrapper {
   position: sticky;
   top: 0;
   z-index: var(--z-index-header);
@@ -46,7 +46,7 @@
   margin-left: 8px;
 }
 
-#pageContentWrapper {
+#main-wrapper {
   padding: 12px 12px 24px 12px;
   min-height: calc(100vh - var(--size-header-height) - var(--size-footer-height));
 }

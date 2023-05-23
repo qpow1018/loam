@@ -20,7 +20,7 @@
   height: var(--size-input-height);
 }
 
-#myCharacterList {
+#my-character-list {
   border-top: 1px solid var(--color-border);
 }
 
@@ -92,22 +92,22 @@
   color: var(--color-text-secondary);
 }
 
-#deleteMyCharacterModal {
+#delete-my-character-modal {
   width: 360px;
 }
-#deleteMyCharacterModal .modal-content {
+#delete-my-character-modal .modal-content {
   padding: 16px 12px;
 }
-#deleteMyCharacterModal .modal-content-text {
+#delete-my-character-modal .modal-content-text {
   font-size: 0.813rem;
 }
-#deleteMyCharacterModal .modal-content-action-box {
+#delete-my-character-modal .modal-content-action-box {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-top: 16px;
 }
-#deleteMyCharacterModal .modal-action-btn {
+#delete-my-character-modal .modal-action-btn {
   margin-left: 8px;
   min-width: 64px;
   height: 36px;

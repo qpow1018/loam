@@ -69,9 +69,7 @@ class Data {
       {
         nickname,
         classname,
-        level,
-        isMainCharacter: false,
-        isSubCharacter: false
+        level
       }
     ]);
   }
@@ -88,6 +86,14 @@ class Data {
 
   setMainLoado(data) {
     storage.set(config.storageKey.mainLoado, data);
+  }
+
+  getMainCharacterLoado() {
+    return storage.get(config.storageKey.mainCharacterLoado, []);
+  }
+
+  setMainCharacterLoado(data) {
+    storage.set(config.storageKey.mainCharacterLoado, data);
   }
 }
 

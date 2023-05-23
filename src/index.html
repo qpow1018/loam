@@ -14,9 +14,9 @@
 
   </head>
   <body>
-    <div id="includedHeaderWrapper"><!-- include by layout.js --></div>
+    <div id="header-wrapper"><!-- include by layout.js --></div>
 
-    <main id="pageContentWrapper">
+    <main id="main-wrapper">
       <div class="loado-page-container">
         <div class="loado-page-main-area">
           <section class="card-section">
@@ -25,56 +25,17 @@
                 메인 캐릭터
               </div>
               <button
-                id="openMainModalBtn"
-                class="btn add-loado-btn"
+                id="open-main-modal-btn"
+                class="btn setup-loado-btn"
                 type="btn"
               >
                 설정
               </button>
             </div>
 
-            <div id="mainTable">
-              <div class="table-subject-column">
-                <div class="loado-cell main-table-subject-cell"></div>
-              </div>
-
-              <div class="table-body">
-                <div class="table-character-column">
-                  <div class="loado-cell">닉네임</div>
-                  
-                  <div class="loado-cell">메모</div>
-                  <div class="loado-cell">혈석</div>
-                  <div class="loado-cell">에포나</div>
-                  <div class="loado-cell">호감도</div>
-                  <div class="loado-cell">카던</div>
-                  <div class="loado-cell">가토</div>
-
-                  <div class="loado-cell">주간에포나</div>
-                  <div class="loado-cell">혈석교환</div>
-                  <div class="loado-cell">큐브</div>
-                  <div class="loado-cell">엔드컨텐츠1</div>
-                  <div class="loado-cell">엔드컨텐츠2</div>
-                  <div class="loado-cell">엔드컨텐츠3</div>
-                </div>
-
-                <div class="table-character-column">
-                  <div class="loado-cell">닉네임</div>
-                  
-                  <div class="loado-cell">메모</div>
-                  <div class="loado-cell">혈석</div>
-                  <div class="loado-cell">에포나</div>
-                  <div class="loado-cell">호감도</div>
-                  <div class="loado-cell">카던</div>
-                  <div class="loado-cell">가토</div>
-
-                  <div class="loado-cell">주간에포나</div>
-                  <div class="loado-cell">혈석교환</div>
-                  <div class="loado-cell">큐브</div>
-                  <div class="loado-cell">엔드컨텐츠1</div>
-                  <div class="loado-cell">엔드컨텐츠2</div>
-                  <div class="loado-cell">엔드컨텐츠3</div>
-                </div>
-              </div>
+            <div id="main-table">
+              <div class="table-subject-column"></div>
+              <div class="table-body"></div>
             </div>
           </section>
 
@@ -84,8 +45,8 @@
                 원정대
               </div>
               <button
-                id="openLoadoTeamBtn"
-                class="btn add-loado-btn"
+                id="open-group-modal-btn"
+                class="btn setup-loado-btn"
                 type="btn"
               >
                 추가
@@ -134,7 +95,7 @@
       </div>
 
       <section
-        id="mainModal"
+        id="main-modal"
         class="loam-modal loado-modal"
       >
         <div class="modal-title-panel">
@@ -148,19 +109,19 @@
             <div class="modal-section-title">
               컨텐츠 관리
             </div>
-            <div class="check-cell-container" id="mainModalContentList"></div>
+            <div class="check-cell-container" id="main-modal-content-list"></div>
           </div>
           <div class="modal-section">
             <div class="modal-section-title">
               캐릭터 관리
             </div>
-            <div class="check-cell-container" id="mainModalCharacterList"></div>
+            <div class="check-cell-container" id="main-modal-character-list"></div>
           </div>
           <div class="modal-action-panel">
             <button
               type="button"
               class="btn modal-action-btn"
-              id="mainModalSubmitBtn"
+              id="main-modal-submit-btn"
             >
               적용하기
             </button>
@@ -169,197 +130,9 @@
       </section>
     </main>
 
-    <div id="includedFooterWrapper"><!-- include by layout.js --></div>
+    <div id="footer-wrapper"><!-- include by layout.js --></div>
 
-    <script type="module">
-      import config from './config/index.js';
-      import { api, snackbar, modal, utils, data } from './lib/stdlib.js';
-      import Drag from './modules/drag.js';
+    <script type="module" src="./js/loado.js"></script>
 
-      const $mainTableSubjectColumn = document.querySelector('#mainTable .table-subject-column');
-
-      const $openMainModalBtn = document.querySelector('#openMainModalBtn');
-      const $closeMainModalBtn = document.querySelector('#mainModal .modal-close-btn');
-      const $mainModalContentList = document.querySelector('#mainModalContentList');
-      const $mainModalCharacterList = document.querySelector('#mainModalCharacterList');
-      const $mainModalSubmitBtn = document.querySelector('#mainModalSubmitBtn');
-
-      // 메인 테이블
-      let testRenderedElm = [];
-
-      initMainTable();
-
-      function initMainTable() {
-        const mainLoado = data.getMainLoado();
-
-        mainLoado.forEach(item => {
-          console.log('item', item);
-
-          const $elm = document.createElement('div');
-          $elm.classList.add('loado-cell', 'loado-cell-hide', 'main-table-subject-cell');
-          $elm.setAttribute('data-keyName', item.keyName);
-
-          $elm.insertAdjacentHTML(
-            'afterbegin',
-            `
-              <div class="main-table-subject-cell-img">
-                Img
-              </div>
-              <div class="main-table-subject-cell-label">
-                ${ config.data[item.keyName].title }
-              </div>
-            `
-          );
-          testRenderedElm.push($elm);
-          // $mainTableSubjectColumn.append($elm);
-        });
-
-        // renderMainLoadoSubjectColumn();
-      }
-
-      function renderMainLoadoSubjectColumn() {
-        const _mainLoado = data.getMainLoado();
-        _mainLoado.forEach(item => {
-          const $targetElm = document.querySelector(`#mainTable .main-table-subject-cell[data-keyName="${item.keyName}"]`);
-          if (item.isUse === true) {
-            $targetElm.classList.remove('loado-cell-hide');
-          } else {
-            $targetElm.classList.add('loado-cell-hide');
-          }
-        });
-      }
-
-
-      // 모달
-      function makeModalCheckElm(id, label) {
-        const $elm = document.createElement('div');
-        $elm.classList.add('check-cell');
-        $elm.insertAdjacentHTML(
-          'afterbegin',
-          `
-            <div class="check-cell-icon">
-              <i class="fa-solid fa-check"></i>
-            </div>
-            <div class="check-cell-label">
-              ${ label }
-            </div>
-          `
-        );
-
-        $elm.setAttribute('data-id', id);
-
-        $elm.addEventListener('click', () => {
-          if ($elm.classList.contains('check-cell-active') === true) {
-            $elm.classList.remove('check-cell-active');
-          } else {
-            $elm.classList.add('check-cell-active');
-          }
-        });
-
-        return $elm;
-      }
-
-      function checkModalCheckElm($elm, isActive) {
-        $elm.classList.remove('check-cell-active');
-        if (isActive === true) {
-          $elm.classList.add('check-cell-active');
-        }
-      }
-
-      // 메인 모달
-      $openMainModalBtn.addEventListener('click', openMainModal);
-      $closeMainModalBtn.addEventListener('click', closeMainModal);
-      $mainModalSubmitBtn.addEventListener('click', submitMainModalData);
-
-      initMainModal();
-
-      function initMainModal() {
-        const mainLoado = data.getMainLoado();
-        mainLoado.forEach(item => {
-          const $elm = makeModalCheckElm(item.keyName, config.data[item.keyName].title);
-          $mainModalContentList.append($elm);
-        });
-
-        const myCharacters = data.getMyCharacters();
-        myCharacters.forEach(item => {
-          const $elm = makeModalCheckElm(item.nickname, item.nickname);
-          $mainModalCharacterList.append($elm);
-        });
-      }
-
-      function openMainModal() {
-        const mainLoado = data.getMainLoado();
-        mainLoado.forEach(item => {
-          const $elm = document.querySelector(`#mainModalContentList .check-cell[data-id="${item.keyName}"]`);
-          checkModalCheckElm($elm, item.isUse);
-        });
-
-        const myCharacters = data.getMyCharacters();
-        myCharacters.forEach(item => {
-          const $elm = document.querySelector(`#mainModalCharacterList .check-cell[data-id="${item.nickname}"]`);
-          checkModalCheckElm($elm, item.isMainCharacter);
-        });
-
-        modal.openWithId('mainModal');
-      }
-
-      function closeMainModal() {
-        modal.closeWithId('mainModal');
-      }
-
-      function submitMainModalData() {
-        // set Loado Data
-        const mainLoado = data.getMainLoado();
-
-        const newMainLoado = mainLoado.map(item => {
-          let isUse = false;
-          const $elm = document.querySelector(`#mainModalContentList .check-cell[data-id="${item.keyName}"]`);
-          if ($elm.classList.contains('check-cell-active') === true) {
-            isUse = true;
-          }
-          return { ...item, isUse };
-        });
-
-        data.setMainLoado(newMainLoado);
-
-        // set Character Data
-        const myCharacters = data.getMyCharacters();
-
-        const newMyCharacters = myCharacters.map(item => {
-          let isMainCharacter = false;
-          const $elm = document.querySelector(`#mainModalCharacterList .check-cell[data-id="${item.nickname}"]`);
-          if ($elm.classList.contains('check-cell-active') === true) {
-            isMainCharacter = true;
-          }
-          return { ...item, isMainCharacter };
-        });
-
-        data.setMyCharacters(newMyCharacters);
-
-        // set Main Loado Data
-        
-        
-        
-        // TODO
-        // 이전 데이터와 비교해서 추가된, 삭제된 데이터 체크 필요
-        
-        
-        
-
-        // render main table
-        initMainTable();
-
-        // close modal
-        closeMainModal();
-      }
-
-
-
-
-      // TEMP TODO
-      openMainModal();
-
-
-    </script>
   </body>
 </html>

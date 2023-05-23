@@ -2,12 +2,12 @@ import { api, snackbar, modal, utils, data } from '/lib/stdlib.js';
 import Drag from '/modules/drag.js';
 
 const $loading = document.querySelector('#loading');
-const $myCharacterList = document.querySelector('#myCharacterList');
-const $characterNicknameInput = document.querySelector('#characterNicknameInput');
-const $addCharacterBtn = document.querySelector('#addCharacterBtn');
-const $deleteModalCloseBtnInHeader = document.querySelector('#deleteMyCharacterModal .modal-title-panel .modal-close-btn');
-const $deleteModalCloseBtnInContent = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .modal-close-btn');
-const $deleteCharacterBtn = document.querySelector('#deleteMyCharacterModal .modal-content-action-box .delete-character-btn');
+const $myCharacterList = document.querySelector('#my-character-list');
+const $characterNicknameInput = document.querySelector('#character-nickname-input');
+const $addCharacterBtn = document.querySelector('#add-character-btn');
+const $deleteModalCloseBtnInHeader = document.querySelector('#delete-my-character-modal .modal-title-panel .modal-close-btn');
+const $deleteModalCloseBtnInContent = document.querySelector('#delete-my-character-modal .modal-content-action-box .modal-close-btn');
+const $deleteCharacterBtn = document.querySelector('#delete-my-character-modal .modal-content-action-box .delete-character-btn');
 
 // 사용할 로딩 엘리먼트 추가
 utils.addLoadingElement($loading, 'fixed');
@@ -104,11 +104,11 @@ $deleteCharacterBtn.addEventListener('click', deleteMyCharacter);
 
 function openDeleteMyCharacterModal(nickname) {
   deleteTargetNickname = nickname;
-  modal.openWithId('deleteMyCharacterModal');
+  modal.openWithId('delete-my-character-modal');
 }
 function closeDeleteMyCharacterModal() {
   deleteTargetNickname = null;
-  modal.closeWithId('deleteMyCharacterModal');
+  modal.closeWithId('delete-my-character-modal');
 }
 
 function deleteMyCharacter(e) {
