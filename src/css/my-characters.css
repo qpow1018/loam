@@ -47,10 +47,10 @@
   justify-content: center;
   border-radius: 50px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 500;
   background-color: var(--color-dark-3);
-  padding: 6px 10px;
-  min-width: 64px;
+  padding: 4px 8px;
+  min-width: 60px;
 }
 .character-nickname-panel {
   margin-left: 12px;
@@ -99,7 +99,7 @@
   padding: 16px 12px;
 }
 #deleteMyCharacterModal .modal-content-text {
-  font-size: 0.875rem;
+  font-size: 0.813rem;
 }
 #deleteMyCharacterModal .modal-content-action-box {
   display: flex;
@@ -110,5 +110,5 @@
 #deleteMyCharacterModal .modal-action-btn {
   margin-left: 8px;
   min-width: 64px;
-  font-size: 0.813rem;
+  height: 36px;
 }
