@@ -31,23 +31,23 @@
   color: var(--color-text-primary);
 }
 #header .navigation-panel a:hover {
-  background-color: var(--color-dark-1);
+  background-color: var(--color-dark-2);
 }
 #header .navigation-panel a.active {
   background-color: var(--color-dark-1);
   color: var(--color-primary);
 }
-#header .navigation-panel a .svg-inline--fa {
-  font-size: 16px;
+#header .navigation-panel a i {
+  font-size: 14px;
 }
 #header .navigation-panel a span {
-  font-size: 0.875rem;
+  font-size: 0.813rem;
   font-weight: 500;
   margin-left: 8px;
 }
 
 #pageContentWrapper {
-  padding: 16px 16px 40px 16px;
+  padding: 12px 12px 24px 12px;
   min-height: calc(100vh - var(--size-header-height) - var(--size-footer-height));
 }
 
@@ -58,6 +58,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
+  font-size: 0.813rem;
   color: var(--color-text-secondary);
 }

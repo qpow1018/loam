@@ -23,11 +23,13 @@
   --color-border: #3c4557;
   --color-border-light: #4c576f;
 
-  --size-header-height: 52px;
-  --size-footer-height: 52px;
-  --size-modal-default-width: 600px;
-  --size-modal-title-height: 52px;
+  --size-header-height: 56px;
+  --size-footer-height: 56px;
   --size-input-height: 40px;
+  
+  --size-modal-default-width: 360px;
+  --size-modal-title-height: 48px;
+  
   --size-loado-cell-width: 140px;
   --size-loado-cell-height: 44px;
   --size-loado-cell-width-sm: 120px;
