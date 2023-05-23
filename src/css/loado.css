@@ -26,73 +26,61 @@
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-.loado-page-container .card-section-title-panel .add-loado-btn {
+.loado-page-container .card-section-title-panel .setup-loado-btn {
   height: 28px;
   font-size: 0.813rem;
   margin-left: 8px;
 }
 
 /* Loado Table Common */
-/* .loado-page-container .empty-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  height: 120px;
-} */
-
 .loado-cell {
+  user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--size-loado-cell-width);
   height: var(--size-loado-cell-height);
-  box-shadow: 0 0 1px #b2b2b2;
 }
 .loado-cell.loado-cell-hide {
   display: none;
 }
 
-
 /* Loado Table Specific */
-#mainTable {
+#main-table,
+#main-table .table-body {
   display: flex;
+}
+#main-table .loado-cell {
+  border-bottom: 1px solid var(--color-border);
+}
+#main-table .loado-cell.loado-cell-header,
+#main-table .loado-cell.loado-cell-last-daily {
+  border-bottom: 2px solid var(--color-border-light);
+}
+#main-table .main-table-subject-cell {
+  justify-content: flex-start;
+  width: var(--size-loado-cell-width-sm);
+}
+#main-table .main-table-subject-cell-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+#main-table .main-table-subject-cell-img img {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+#main-table .main-table-subject-cell-label {
+  font-size: 0.813rem;
+  font-weight: 500;
+}
+
+#main-table .loado-cell {
   box-shadow: 0 0 1px red;
 }
-#mainTable .table-body {
-  display: flex;
-}
-#mainTable .loado-cell.main-table-subject-cell {
-  width: var(--size-loado-cell-width-sm);
-  background-color: red;
-}
 
-
-
-/* #mainTable .main-table-subject-cell .main-table-subject-cell-inner {
-  display: ;
-  background-color: blue;
-} */
-
-
-
-/* #loadoPage .character-table .table-row .table-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 0.813rem;
-  padding: 0 8px;
-  cursor: pointer;
-  transition: var(--default-transition);
-}
-#loadoPage .character-table .table-row .table-cell:first-of-type {
-  justify-content: flex-start;
-}
-#loadoPage .character-table .table-row .table-cell:hover {
-  background-color: var(--color-dark-1);
-} */
 
 
 /* Loado Modal */
