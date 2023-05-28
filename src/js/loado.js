@@ -10,7 +10,110 @@ const $mainModalContentList = document.querySelector('#main-modal-content-list')
 const $mainModalCharacterList = document.querySelector('#main-modal-character-list');
 const $mainModalSubmitBtn = document.querySelector('#main-modal-submit-btn');
 
-// 메인 테이블
+const $closeMemoContentsModalBtn = document.querySelector('#memo-contents-modal .modal-close-btn');
+const $memoContentsInput = document.querySelector('#memo-contents-modal #memo-contents-input');
+const $memoContentsSubmitBtn = document.querySelector('#memo-contents-modal #memo-contents-submit-btn');
+
+// Common Content Cell
+$closeMemoContentsModalBtn.addEventListener('click', closeMemoContentsModal);
+$memoContentsSubmitBtn.addEventListener('click', submitMemoContents);
+
+let $dataTargetCell = null;
+let dataTarget = null;
+let dataKeyName = null;
+let dataNickname = null;
+let dataCellType = null;
+let dataCellValue = null;
+
+function clearContentCellData() {
+  $dataTargetCell = null;
+  dataTarget = null;
+  dataKeyName = null;
+  dataNickname = null;
+  dataCellType = null;
+  dataCellValue = null;
+}
+
+function updateContentCellTextData() {
+  switch (dataTarget) {
+    case 'main': {
+      const _value = $memoContentsInput.value.trim();
+      $dataTargetCell.textContent = _value;
+      data.updateMainCharacterLoado(dataNickname, dataKeyName, dataCellType, _value);
+      break;
+    }
+    case 'group': {
+      break;
+    }
+    case 'sub': {
+      break;
+    }
+    default: {
+      throw new Error('undefined cell data target');
+    }
+  }
+}
+
+function updateContentCellCheckboxData() {
+  switch (dataTarget) {
+    case 'main': {
+      $dataTargetCell.classList.toggle('active');
+      data.updateMainCharacterLoado(dataNickname, dataKeyName, dataCellType, !dataCellValue);
+      break;
+    }
+    case 'group': {
+      break;
+    }
+    case 'sub': {
+      break;
+    }
+    default: {
+      throw new Error('undefined cell data target');
+    }
+  }
+}
+
+function handleClickContentCell() {
+  switch (dataCellType) {
+    case 'text': {
+      openMemoContentsModal();
+      break;
+    }
+    case 'checkbox': {
+      updateContentCellCheckboxData();
+      break;
+    }
+    case 'relaxationBonus': {
+      break;
+    }
+    default: {
+      throw new Error('undefined cell type');
+    }
+  }
+}
+
+function openMemoContentsModal() {
+  $memoContentsInput.value = dataCellValue;
+  modal.openWithId('memo-contents-modal');
+  $memoContentsInput.focus();
+}
+
+function closeMemoContentsModal() {
+  $memoContentsInput.value = '';
+  modal.closeWithId('memo-contents-modal');
+}
+
+function submitMemoContents() {
+  updateContentCellTextData();
+  closeMemoContentsModal();
+}
+
+
+
+
+
+
+// Main Table
 initMainTable();
 
 function initMainTable() {
@@ -18,36 +121,35 @@ function initMainTable() {
   $mainTableSubjectColumn.replaceChildren();
   $mainTableBody.replaceChildren();
 
-  const mainCharacterLoado = data.getMainCharacterLoado();
-  if (0 < mainCharacterLoado.length) {
-    renderMainLoadoSubjectColumn();
-    renderMainLoadoCharacterColumn();
+  const allMainCharacterLoado = data.getAllMainCharacterLoado();
+  if (0 < allMainCharacterLoado.length) {
+    initMainLoadoSubjectColumn();
+    initMainLoadoCharacterColumn();
   }
 }
 
-function renderMainLoadoSubjectColumn() {
+function initMainLoadoSubjectColumn() {
   $mainTableSubjectColumn.insertAdjacentHTML('afterbegin', '<div class="loado-cell main-table-subject-cell loado-cell-header"></div>');
 
-  const mainLoado = data.getMainLoado();
-  const useMainLoado = mainLoado.filter(item => item.isUse === true);
+  const useMainLoado = data.getMainLoado().filter(item => item.isUse === true);
   let $lastDailyContentElm = null;
 
   for (let i = 0; i < useMainLoado.length; i++) {
     const keyName = useMainLoado[i].keyName;
-    const data = config.data[keyName];
+    const contentData = config.data[keyName];
 
     const $elm = document.createElement('div');
     $elm.classList.add('loado-cell', 'main-table-subject-cell');
 
-    if (data.resetType === 'daily') {
+    if (contentData.resetType === 'daily') {
       $lastDailyContentElm = $elm;
     }
 
     let iconElmStr = '';
-    if (data.iconFileName !== '') {
+    if (contentData.iconFileName !== '') {
       iconElmStr = `
         <img
-          src="assets/images/${data.iconFileName}"
+          src="assets/images/${contentData.iconFileName}"
           alt=""
         />
       `;
@@ -59,7 +161,7 @@ function renderMainLoadoSubjectColumn() {
           ${ iconElmStr }
         </div>
         <div class="main-table-subject-cell-label">
-          ${ data.title }
+          ${ contentData.title }
         </div>
       `
     );
@@ -72,51 +174,140 @@ function renderMainLoadoSubjectColumn() {
   }
 }
 
-function renderMainLoadoCharacterColumn() {
-  const mainCharacterLoado = data.getMainCharacterLoado();
-  mainCharacterLoado.forEach(item => {
-    const $elm = makeMainLoadoCharacterColumn(item);
-    $mainTableBody.append($elm);
+function initMainLoadoCharacterColumn() {
+  const newMainCharacterLoado = [];
+
+  const allMainCharacterLoado = data.getAllMainCharacterLoado();
+  allMainCharacterLoado.forEach(item => {
+    const { $columnElm, loadoData } = getMainLoadoCharacterColumnAndMainLoadoCharacterData(item);
+    newMainCharacterLoado.push(loadoData);
+    $mainTableBody.append($columnElm);
   });
+
+  data.setAllMainCharacterLoado(newMainCharacterLoado);
 }
 
-function makeMainLoadoCharacterColumn(data) {
-  console.log('testData', data);
-
-  const $elm = document.createElement('div');
-  $elm.classList.add('table-character-column');
-
-  $elm.insertAdjacentHTML('afterbegin',
+function getMainLoadoCharacterColumnAndMainLoadoCharacterData(mainCharacterLoado) {
+  const $columnElm = document.createElement('div');
+  $columnElm.classList.add('table-character-column');
+  $columnElm.insertAdjacentHTML('afterbegin',
     `
-      <div class="loado-cell loado-cell-header">
-        dddd
+      <div class="loado-cell loado-cell-header loado-nickname-cell">
+        <div class="loado-nickname-cell-classname">
+          ${ mainCharacterLoado.classname }
+        </div>
+        <div class="loado-nickname-cell-nickname">
+          ${ mainCharacterLoado.nickname }
+        </div>
       </div>
     `
   );
 
-  // <div class="table-character-column">
-  //   <div class="loado-cell">닉네임</div>
-    
-  //   <div class="loado-cell">메모</div>
-  //   <div class="loado-cell">혈석</div>
-  //   <div class="loado-cell">에포나</div>
-  //   <div class="loado-cell">호감도</div>
-  //   <div class="loado-cell">카던</div>
-  //   <div class="loado-cell">가토</div>
+  const newLoado = {
+    nickname: mainCharacterLoado.nickname,
+    classname: mainCharacterLoado.classname
+  };
 
-  //   <div class="loado-cell">주간에포나</div>
-  //   <div class="loado-cell">혈석교환</div>
-  //   <div class="loado-cell">큐브</div>
-  //   <div class="loado-cell">엔드컨텐츠1</div>
-  //   <div class="loado-cell">엔드컨텐츠2</div>
-  //   <div class="loado-cell">엔드컨텐츠3</div>
-  // </div>
-  
-  return $elm;
+  const useMainLoado = data.getMainLoado().filter(item => item.isUse === true);
+  let $lastDailyContentElm = null;
+
+  for (let i = 0; i < useMainLoado.length; i++) {
+    const keyName = useMainLoado[i].keyName;
+    const contentData = config.data[keyName];
+
+    let cellType = null;
+    let cellValue = '';
+
+    const originData = mainCharacterLoado[keyName];
+    if (originData !== undefined) {
+      cellType = originData.type;
+      cellValue = originData.value;
+
+    } else {
+      cellType = contentData.defaultCellType;
+      cellValue = contentData.defaultValue;
+    }
+
+    const $loadoCellElm = document.createElement('div');
+    $loadoCellElm.classList.add('loado-cell');
+    setupMainLoadoCharacterContentCell($loadoCellElm, mainCharacterLoado.nickname, keyName, cellType, cellValue);
+
+    newLoado[keyName] = {
+      keyName: keyName,
+      type: cellType,
+      value: cellValue
+    }
+
+    if (contentData.resetType === 'daily') {
+      $lastDailyContentElm = $loadoCellElm;
+    }
+
+    $columnElm.appendChild($loadoCellElm);
+  }
+
+  if ($lastDailyContentElm !== null) {
+    $lastDailyContentElm.classList.add('loado-cell-last-daily');
+  }
+
+  return { $columnElm, loadoData: newLoado };
 }
 
+function setupMainLoadoCharacterContentCell($parent, nickname, keyName, cellType, cellValue) {
+  const $contentCell = document.createElement('div');
+  $contentCell.classList.add('loado-content-cell');
 
-// 모달
+  let cellInnerElmStr = '';
+
+  switch (cellType) {
+    case 'text': {
+      $contentCell.classList.add('loado-content-cell-text');
+      cellInnerElmStr = cellValue;
+      break;
+    }
+    case 'checkbox': {
+      $contentCell.classList.add('loado-content-cell-checkbox');
+      if (cellValue === true) {
+        $contentCell.classList.add('active');
+      }
+      cellInnerElmStr = `
+        <i class="fa-regular fa-square no-active"></i>
+        <i class="fa-solid fa-square-check active"></i>
+      `;
+      break;
+    }
+    case 'relaxationBonus': {
+      $contentCell.classList.add('loado-content-cell-relaxatio-bonus');
+      cellInnerElmStr = `
+        ${ cellValue.count }
+        <i class="fa-regular fa-square no-active"></i>
+        <i class="fa-solid fa-square-check active"></i>
+      `;
+      break;
+    }
+    default: {
+      throw new Error('undefined cell type');
+    }
+  }
+
+  $contentCell.insertAdjacentHTML('afterbegin', cellInnerElmStr);
+
+  $contentCell.addEventListener('click', () => {
+    clearContentCellData();
+
+    $dataTargetCell = $contentCell;
+    dataTarget = 'main';
+    dataKeyName = keyName;
+    dataNickname = nickname;
+    dataCellType = cellType;
+    dataCellValue = cellValue;
+
+    handleClickContentCell();
+  });
+
+  $parent.appendChild($contentCell);
+}
+
+// Common Modal
 function makeModalCheckElm(label) {
   const $elm = document.createElement('div');
   $elm.classList.add('check-cell');
@@ -149,7 +340,7 @@ function checkModalCheckElm($elm, isActive) {
   }
 }
 
-// 메인 모달
+// Main Modal
 $openMainModalBtn.addEventListener('click', openMainModal);
 $closeMainModalBtn.addEventListener('click', closeMainModal);
 $mainModalSubmitBtn.addEventListener('click', submitMainModalData);
@@ -160,7 +351,7 @@ function initMainModal() {
   const mainLoado = data.getMainLoado();
   mainLoado.forEach(item => {
     const $elm = makeModalCheckElm(config.data[item.keyName].title);
-    $elm.setAttribute('data-keyName', item.keyName);
+    $elm.setAttribute('data-key-name', item.keyName);
     $mainModalContentList.append($elm);
   });
 
@@ -176,12 +367,12 @@ function initMainModal() {
 function openMainModal() {
   const mainLoado = data.getMainLoado();
   mainLoado.forEach(item => {
-    const $elm = document.querySelector(`#main-modal-content-list .check-cell[data-keyName="${item.keyName}"]`);
+    const $elm = document.querySelector(`#main-modal-content-list .check-cell[data-key-name="${item.keyName}"]`);
     checkModalCheckElm($elm, item.isUse);
   });
 
-  const mainCharacterLoado = data.getMainCharacterLoado();
-  mainCharacterLoado.forEach(item => {
+  const allMainCharacterLoado = data.getAllMainCharacterLoado();
+  allMainCharacterLoado.forEach(item => {
     const $elm = document.querySelector(`#main-modal-character-list .check-cell[data-nickname="${item.nickname}"]`);
     checkModalCheckElm($elm, true);
   });
@@ -210,7 +401,7 @@ function setLoadoData() {
 
   const newMainLoado = mainLoado.map(item => {
     let isUse = false;
-    const $elm = document.querySelector(`#main-modal-content-list .check-cell[data-keyName="${item.keyName}"]`);
+    const $elm = document.querySelector(`#main-modal-content-list .check-cell[data-key-name="${item.keyName}"]`);
     if ($elm.classList.contains('check-cell-active') === true) {
       isUse = true;
     }
@@ -221,8 +412,8 @@ function setLoadoData() {
 }
 
 function setMainCharacterLoadoData() {
-  const mainCharacterLoado = data.getMainCharacterLoado();
-  const originData = mainCharacterLoado.map(item => item.nickname);
+  const allMainCharacterLoado = data.getAllMainCharacterLoado();
+  const originData = allMainCharacterLoado.map(item => item.nickname);
 
   const newData = [];
   const $elms = document.querySelectorAll(`#main-modal-character-list .check-cell.check-cell-active`);
@@ -230,7 +421,7 @@ function setMainCharacterLoadoData() {
     const nickname = $elm.getAttribute('data-nickname');
     const classname = $elm.getAttribute('data-classname');
     newData.push({ nickname, classname });
-  })
+  });
 
   const resultData = [];
 
@@ -248,5 +439,5 @@ function setMainCharacterLoadoData() {
     resultData.push(item);
   });
 
-  data.setMainCharacterLoado(resultData);
+  data.setAllMainCharacterLoado(resultData);
 }

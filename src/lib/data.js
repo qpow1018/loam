@@ -88,13 +88,31 @@ class Data {
     storage.set(config.storageKey.mainLoado, data);
   }
 
-  getMainCharacterLoado() {
+  getAllMainCharacterLoado() {
     return storage.get(config.storageKey.mainCharacterLoado, []);
   }
 
-  setMainCharacterLoado(data) {
+  setAllMainCharacterLoado(data) {
     storage.set(config.storageKey.mainCharacterLoado, data);
   }
+
+  deleteMainCharacterLoado(nickname) {
+    const allMainCharacterLoado = this.getAllMainCharacterLoado();
+    const newList = allMainCharacterLoado.filter(item => item.nickname !== nickname);
+    this.setAllMainCharacterLoado(newList);
+  }
+
+  updateMainCharacterLoado(nickname, keyName, type, value) {
+    const allMainCharacterLoado = this.getAllMainCharacterLoado();
+
+    const newList = [ ...allMainCharacterLoado ];
+    const targetIndex = newList.findIndex(item => item.nickname === nickname);
+    newList[targetIndex][keyName] = { keyName, type, value }
+
+    this.setAllMainCharacterLoado(newList);
+  }
+  
+  
 }
 
 const _inst = new Data();

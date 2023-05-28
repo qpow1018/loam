@@ -115,6 +115,8 @@ function deleteMyCharacter(e) {
   if (deleteTargetNickname === null) return;
 
   data.deleteMyCharacter(deleteTargetNickname);
+  data.deleteMainCharacterLoado(deleteTargetNickname);
+
   const $deleteTargetElm = document.querySelector(`.character-item[data-nickname="${deleteTargetNickname}"]`);
   $deleteTargetElm.remove();
 
