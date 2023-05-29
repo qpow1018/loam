@@ -108,11 +108,6 @@ function submitMemoContents() {
   closeMemoContentsModal();
 }
 
-
-
-
-
-
 // Main Table
 initMainTable();
 
